@@ -1,0 +1,221 @@
+/* Astra Brasil — Plano de MKT
+   Consultoria premium: off-white, tipografia editorial, espaço, autoridade */
+
+:root {
+  --ink: #0E1116;
+  --ink-soft: #2A2F38;
+  --muted: #6B7280;
+  --line: #D9D5CC;
+  --line-soft: #ECE8DE;
+  --paper: #F4F0E6;
+  --paper-2: #EAE3D2;
+  --paper-3: #FAF7EF;
+  --navy: #0B2545;
+  --navy-2: #13315C;
+  --gold: #B8893E;
+  --gold-soft: #D9B26A;
+  --accent: #8B2E1F;
+  --green: #2E5E3E;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+deck-stage { background: #1a1a1a; }
+
+section {
+  width: 1920px;
+  height: 1080px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  font-size: 22px;
+  line-height: 1.5;
+  position: relative;
+  overflow: hidden;
+  padding: 90px 110px;
+  display: flex;
+  flex-direction: column;
+}
+
+.serif { font-family: "Fraunces", "Times New Roman", Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+.mono  { font-family: "JetBrains Mono", "Courier New", monospace; }
+
+/* — Chrome — every slide carries a small mast & footer */
+.mast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 56px;
+  font-weight: 500;
+}
+.mast .brand { display: flex; align-items: center; gap: 14px; color: var(--ink); }
+.mast .brand .dot { width: 9px; height: 9px; background: var(--gold); border-radius: 999px; }
+.mast .meta { color: var(--muted); }
+
+.foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.foot .label { color: var(--ink-soft); }
+
+/* — Numbers — */
+.num {
+  font-family: "Fraunces", Georgia, serif;
+  font-feature-settings: "lnum";
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+/* — Buttons / pills — */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--paper-3);
+  font-weight: 500;
+}
+.pill .swatch { width: 8px; height: 8px; background: var(--gold); border-radius: 999px; }
+.pill.dark { background: var(--ink); color: var(--paper-3); border-color: var(--ink); }
+.pill.gold { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+/* — Titles — */
+h1.display {
+  font-family: "Fraunces", serif;
+  font-weight: 300;
+  font-size: 148px;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+h2.title {
+  font-family: "Fraunces", serif;
+  font-weight: 300;
+  font-size: 92px;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+h3.kicker {
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
+.lead {
+  font-size: 32px;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  font-weight: 300;
+  max-width: 1200px;
+}
+.body {
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.small { font-size: 16px; color: var(--muted); }
+.label-up {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* — Decorative — */
+.rule { height: 1px; background: var(--line); width: 100%; }
+.rule-dark { height: 2px; background: var(--ink); width: 60px; }
+
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(11,37,69,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11,37,69,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+.corner-mark {
+  position: absolute;
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* — Cards — */
+.card {
+  background: var(--paper-3);
+  border: 1px solid var(--line);
+  padding: 32px;
+  position: relative;
+}
+.card.dark {
+  background: var(--ink);
+  color: var(--paper-3);
+  border-color: var(--ink);
+}
+.card.navy {
+  background: var(--navy);
+  color: var(--paper-3);
+  border-color: var(--navy);
+}
+
+/* — Tables — */
+table.editorial {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 20px;
+}
+table.editorial th, table.editorial td {
+  text-align: left;
+  padding: 22px 18px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+table.editorial th {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 14px;
+}
+
+/* — Astra mark / monogram — */
+.astra-mark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+.astra-mark .star { color: var(--gold); font-size: 0.8em; }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 113.1 113.1">
+  
+  <defs>
+    
+  </defs>
+  <rect class="st1" x="12.7" y="4.2" width="58.8" height="12.6" rx="6.3" ry="6.3"></rect>
+  <polyline class="st1" points="19.7 63.4 19.7 16.8 63 16.8 71.5 53.3"></polyline>
+  <line class="st1" x1="35.2" y1="16.8" x2="35.2" y2="40.3"></line>
+  <line class="st1" x1="35.2" y1="53.5" x2="35.2" y2="46.1"></line>
+  <polygon class="st1" points="103.1 91 19.7 91 19.7 53.5 71.5 53.5 103.1 67.7 103.1 91"></polygon>
+  <polyline class="st1" points="102.4 75.5 71.5 75.5 71.5 54.1"></polyline>
+  <circle class="st0" cx="96.7" cy="97.6" r="12.2"></circle>
+  <polyline class="st1" points="90.4 38.4 86.2 45 86.2 60.1"></polyline>
+  <circle class="st0" cx="28.6" cy="85.5" r="24.3"></circle>
+  <circle class="st0" cx="28.6" cy="85.5" r="10"></circle>
+</svg>

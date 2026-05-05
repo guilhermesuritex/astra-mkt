@@ -1,0 +1,2258 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Astra — Planejamento de Marketing · Maio 2026</title>
+<link rel="stylesheet" href="brand.css">
+<script src="deck-stage.js"></script>
+<style>
+/* Local helpers */
+.kicker { font-weight:600; font-size:12px; letter-spacing:0.20em; text-transform:uppercase; color:var(--astra-blue); margin-bottom:24px; }
+
+/* Slide chrome */
+.slide-num { font-feature-settings:"lnum"; }
+
+/* Cover */
+.cover-mark { width:88px; height:88px; }
+.cover-mark .st0 { fill: var(--astra-blue); }
+
+/* Brand mark inline */
+.brand-A {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:32px; height:32px;
+}
+
+/* Sections */
+.divider {
+  background: var(--astra-blue);
+  color: #fff;
+  padding:0;
+}
+.divider section { padding:0; }
+
+/* Phase block */
+.phase {
+  background:#fff; border:1px solid var(--line);
+  padding:32px 30px; display:flex; flex-direction:column; gap:16px;
+  min-height:0;
+}
+.phase-num {
+  font-size:48px; font-weight:600; line-height:1;
+  color:var(--astra-blue); letter-spacing:-0.03em;
+}
+.phase-title { font-size:32px; font-weight:600; line-height:1.05; letter-spacing:-0.02em; }
+.phase-list { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+.phase-list li {
+  list-style:none; padding-left:22px; position:relative;
+  font-size:18px; line-height:1.4; color:var(--ink-soft);
+}
+.phase-list li::before {
+  content:''; position:absolute; left:0; top:11px;
+  width:8px; height:8px; background:var(--astra-blue);
+  clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%);
+}
+
+/* Deliverable row */
+.deliv {
+  display:grid; grid-template-columns: 90px 1fr auto; gap:24px;
+  padding: 22px 0; border-bottom:1px solid var(--line);
+  align-items:start;
+}
+.deliv:last-child { border-bottom:none; }
+.deliv .when {
+  font-feature-settings:"lnum";
+  font-weight:600; font-size:18px; color:var(--astra-blue);
+  letter-spacing:0.04em;
+}
+.deliv .what { font-size:24px; font-weight:500; color:var(--ink); line-height:1.2; }
+.deliv .what-sub { font-size:16px; color:var(--muted); margin-top:4px; }
+.deliv .who { font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); font-weight:600; padding-top:6px; }
+
+/* Week column for monthly cycle */
+.week-col {
+  background:#fff; border:1px solid var(--line);
+  display:flex; flex-direction:column;
+  min-height:0;
+}
+.week-col-head {
+  padding:24px 26px; border-bottom:1px solid var(--line);
+  display:flex; flex-direction:column; gap:6px;
+}
+.week-col-head.is-blue { background: var(--astra-blue); color:#fff; border-color: var(--astra-blue); }
+.week-col-head.is-ink { background: var(--ink); color:#fff; border-color: var(--ink); }
+.week-num { font-size:14px; letter-spacing:0.18em; text-transform:uppercase; font-weight:700; opacity:0.8; }
+.week-title { font-size:30px; font-weight:600; line-height:1.05; letter-spacing:-0.02em; }
+.week-body { padding:22px 26px; display:flex; flex-direction:column; gap:14px; flex:1; }
+.week-item { display:flex; gap:12px; align-items:flex-start; }
+.week-item-mark {
+  width:8px; height:8px; margin-top:8px;
+  background:var(--astra-blue);
+  clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%);
+  flex-shrink:0;
+}
+.week-item-text { font-size:17px; line-height:1.35; color:var(--ink-soft); }
+.week-deliv {
+  margin-top:auto; padding:18px 26px;
+  background:var(--paper-2); border-top:1px solid var(--line);
+  font-size:13px; letter-spacing:0.04em; color:var(--ink); font-weight:600;
+}
+.week-deliv-label { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; font-weight:700; }
+
+/* Module cards */
+.mod {
+  background:#fff; border:1px solid var(--line);
+  padding:28px 28px 26px;
+  display:flex; flex-direction:column; gap:14px;
+  min-height:0;
+}
+.mod-icon {
+  width:64px; height:64px; padding:10px;
+  background: var(--astra-blue-tint); border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+}
+.mod-icon svg { width:100%; height:100%; }
+.mod-num { font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700; }
+.mod-name { font-size:26px; font-weight:600; line-height:1.1; letter-spacing:-0.01em; }
+.mod-desc { font-size:16px; line-height:1.4; color:var(--ink-soft); }
+.mod-foot {
+  margin-top:auto; padding-top:14px; border-top:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:13px;
+}
+.mod-tag { color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; font-weight:600; font-size:11px; }
+.mod-week { color:var(--astra-blue); font-weight:700; letter-spacing:0.04em; }
+
+/* Gantt for implantation */
+.gantt-grid {
+  display:grid; grid-template-columns: 280px repeat(4, 1fr);
+  gap:0; align-items:stretch;
+}
+.gantt-grid.head { border-bottom:2px solid var(--ink); padding-bottom:12px; margin-bottom:6px; }
+.gantt-cell-head { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; text-align:center; }
+.gantt-cell-head.first { text-align:left; padding-left:0; }
+.gantt-row {
+  display:grid; grid-template-columns: 280px repeat(4, 1fr);
+  align-items:center; padding:14px 0;
+  border-bottom:1px solid var(--line-soft);
+}
+.gantt-label { padding-right:24px; }
+.gantt-label-name { font-size:18px; font-weight:600; color:var(--ink); }
+.gantt-label-sub { font-size:14px; color:var(--muted); }
+.gantt-track {
+  position:relative; height:34px;
+  background: transparent;
+  border-left:1px solid var(--line-soft);
+}
+.gantt-track:last-child { border-right:1px solid var(--line-soft); }
+.gantt-bar {
+  position:absolute; top:6px; bottom:6px;
+  background: var(--astra-blue); color:#fff;
+  display:flex; align-items:center; padding:0 12px;
+  font-size:13px; font-weight:600; letter-spacing:0.02em;
+}
+.gantt-bar.gold { background: var(--gold); color:#fff; }
+.gantt-bar.ink { background: var(--ink); color:#fff; }
+
+</style>
+</head>
+<body>
+
+<deck-stage>
+
+<!-- ============================================================ -->
+<!-- 01 — CAPA                                                     -->
+<!-- ============================================================ -->
+<section data-screen-label="01 Capa" style="padding:0; background:var(--paper);">
+  <!-- Top bar -->
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; z-index:2;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <svg width="42" height="42" viewBox="0 0 272.9 259.3">
+        <path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/>
+      </svg>
+      <span style="font-weight:700; font-size:18px; letter-spacing:0.02em; color:var(--ink);">Astra</span>
+    </div>
+    <span class="label">Planejamento de Marketing · Maio 2026</span>
+  </div>
+
+  <!-- Main composition -->
+  <div style="position:absolute; left:100px; right:100px; top:46%; transform:translateY(-50%); z-index:2;">
+    <div class="label-blue" style="margin-bottom:32px;">Planejamento de Marketing · Astra · Maio 2026</div>
+    <div style="font-weight:600; font-size:148px; line-height:0.92; letter-spacing:-0.045em; color:var(--ink);">
+      Plano de<br>
+      <span style="color:var(--astra-blue); font-weight:400;">implementação</span><br>
+      &amp; operação.
+    </div>
+  </div>
+
+  <!-- Bottom info -->
+  <div style="position:absolute; left:100px; right:100px; bottom:80px; display:grid; grid-template-columns:repeat(3, 1fr); gap:32px; z-index:2; color:var(--ink);">
+    <div>
+      <div class="label" style="margin-bottom:10px;">Para</div>
+      <div style="font-size:24px; font-weight:600;">Astra Bancos</div>
+      <div class="small">Diretoria</div>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:10px;">Implementação</div>
+      <div style="font-size:24px; font-weight:600;">Maio 2026</div>
+      <div class="small">Mês corrente</div>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:10px;">Operação</div>
+      <div style="font-size:24px; font-weight:600;">Recorrente</div>
+      <div class="small">Cronograma mensal</div>
+    </div>
+  </div>
+
+  <!-- Bottom rule -->
+  <div style="position:absolute; bottom:36px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; z-index:2;">
+    <span>01 / 16</span>
+    <span>Maio · 2026</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 02 — POR QUE ESTE DOCUMENTO                                   -->
+<!-- ============================================================ -->
+<section data-screen-label="02 Por que este documento">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>02 / 16</span>
+  </div>
+
+  <div class="kicker">O que muda a partir de agora</div>
+  <h2 class="title" style="margin-bottom:36px; max-width:1500px;">Rotina primeiro.<br>Implementação junto.</h2>
+
+  <p class="lead" style="max-width:1300px; margin-bottom:56px;">
+    Identificamos que, ao priorizar novas implementações, algumas tarefas de <strong style="color:var(--ink); font-weight:600;">rotina diária</strong> ficaram para trás. Agora vamos reorganizar a operação em duas camadas claras, garantindo que <strong style="color:var(--ink); font-weight:600;">nada de rotina fique descoberto</strong> enquanto evoluímos.
+  </p>
+
+  <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:28px;">
+    <!-- Rotina — prioridade -->
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:36px 40px;">
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px;">
+        <div style="background:rgba(255,255,255,0.2); padding:5px 14px; border-radius:999px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; font-weight:700;">Prioridade</div>
+      </div>
+      <div style="font-size:44px; font-weight:600; line-height:0.96; letter-spacing:-0.03em; margin-bottom:14px;">
+        Operação <span style="font-weight:400;">de rotina.</span>
+      </div>
+      <div style="font-size:17px; line-height:1.45; opacity:0.9;">
+        Tudo que acontece todo dia e toda semana sem exceção. Nunca para, nunca atrasa.
+      </div>
+    </div>
+
+    <!-- Implementação — em paralelo -->
+    <div class="card" style="display:flex; flex-direction:column; padding:36px 40px; border:2px solid var(--line);">
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px;">
+        <div style="background:var(--astra-blue-tint); color:var(--astra-blue); padding:5px 14px; border-radius:999px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; font-weight:700;">Em paralelo</div>
+      </div>
+      <div style="font-size:44px; font-weight:600; line-height:0.96; letter-spacing:-0.03em; margin-bottom:14px; color:var(--ink);">
+        Novas <span style="font-weight:400; color:var(--astra-blue);">implementações.</span>
+      </div>
+      <div style="font-size:17px; line-height:1.45; color:var(--ink-soft);">
+        Projetos com prazo e entregável definido. Só avançam se a rotina estiver em dia.
+      </div>
+    </div>
+  </div>
+
+  <!-- Demandas pontuais -->
+  <div class="card-tint" style="padding:20px 32px; display:flex; align-items:center; gap:24px; margin-top:24px;">
+    <div style="font-size:12px; letter-spacing:0.18em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); white-space:nowrap;">Demandas pontuais</div>
+    <div style="width:1px; height:28px; background:var(--astra-blue-soft);"></div>
+    <div style="font-size:16px; color:var(--ink-soft); line-height:1.4;">
+      Projetos que surgem ao longo do mês: eventos, materiais de feira, brindes, artes para estande, vetorizações. Absorvidos pela equipe sem comprometer a rotina.
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>02 / 16</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 03 — PRESENCIAL NA ASTRA                                      -->
+<!-- ============================================================ -->
+<section data-screen-label="03 Presencial na Astra">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Operação</span>
+  </div>
+
+  <div class="kicker">Terça e quinta na fábrica</div>
+  <h2 class="title" style="font-size:80px; margin-bottom:24px;">Imersão na operação.</h2>
+
+  <p class="lead" style="max-width:1300px; margin-bottom:48px;">
+    Estar presencial na Astra duas vezes por semana muda a qualidade de tudo que a gente produz. Não é visita: é imersão na fábrica para entender o produto, acompanhar o processo e <strong style="color:var(--ink); font-weight:600;">gerar conteúdo real</strong>.
+  </p>
+
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; flex:1; min-height:0;">
+
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px 24px;">
+      <div style="font-size:42px; font-weight:600; line-height:0.9; letter-spacing:-0.04em; margin-bottom:12px;">Produto</div>
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+      <div style="font-size:14px; color:#fff; line-height:1.5;">
+        Entender cada linha de banco, peça e acessório. Falar com quem monta, quem reforma e quem instala.
+      </div>
+    </div>
+
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px 24px;">
+      <div style="font-size:42px; font-weight:600; line-height:0.9; letter-spacing:-0.04em; margin-bottom:12px;">Conteúdo</div>
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+      <div style="font-size:14px; color:#fff; line-height:1.5;">
+        Gravar reformas, montagens e instalações. Captar fotos e vídeos reais para redes sociais, blog e páginas de produto.
+      </div>
+    </div>
+
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px 24px;">
+      <div style="font-size:42px; font-weight:600; line-height:0.9; letter-spacing:-0.04em; margin-bottom:12px;">Páginas</div>
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+      <div style="font-size:14px; color:#fff; line-height:1.5;">
+        Reescrever páginas de produto com informação técnica real. Fotos próprias, descrições que vendem, SEO aplicado.
+      </div>
+    </div>
+
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px 24px;">
+      <div style="font-size:42px; font-weight:600; line-height:0.9; letter-spacing:-0.04em; margin-bottom:12px;">Agilidade</div>
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+      <div style="font-size:14px; color:#fff; line-height:1.5;">
+        Alinhamento direto com a equipe. Aprovações rápidas, menos ruído, mais resultado em menos tempo.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>Operação</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 04 — DIVISOR · ROTINA                                         -->
+<!-- ============================================================ -->
+<section data-screen-label="04 Divisor Rotina" style="padding:0; background:var(--astra-blue); color:#fff; overflow:hidden;">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:600;">
+    <span>Astra · Planejamento de Marketing</span>
+    <span>Operação de rotina</span>
+  </div>
+
+  <div style="position:absolute; left:100px; right:100px; top:50%; transform:translateY(-50%); z-index:2;">
+    <div class="label" style="color:rgba(255,255,255,0.85); margin-bottom:36px;">Bloco 1 · Prioridade</div>
+    <div style="font-weight:600; font-size:220px; line-height:0.9; letter-spacing:-0.045em;">
+      Operação<br>
+      <span style="font-weight:400;">de rotina.</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:32px; margin-top:48px;">
+      <div style="height:2px; background:#fff; width:120px;"></div>
+      <div style="font-weight:400; font-size:30px;">O que acontece todo dia e toda semana, sem exceção.</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:36px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:700;">
+    <span>Astra · Planejamento de Marketing</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 04 — O QUE É ROTINA                                           -->
+<!-- ============================================================ -->
+<section data-screen-label="05 Rotina detalhada">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Operação de rotina</span>
+  </div>
+
+  <div class="kicker">O que não pode parar</div>
+  <h2 class="title" style="margin-bottom:36px;">A base da operação mensal.</h2>
+
+  <p class="lead" style="max-width:1300px; margin-bottom:48px;">
+    Estas são as frentes que rodam todo mês com cadência fixa. Antes de qualquer nova implementação, garantimos que tudo aqui esteja em dia.
+  </p>
+
+  <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:16px; flex:1; min-height:0;">
+    <!-- Redes Sociais -->
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px 24px;">
+      <div style="font-size:18px; font-weight:600; line-height:1.15; margin-bottom:24px;">Redes Sociais</div>
+      <div style="font-size:80px; font-weight:600; line-height:0.9; letter-spacing:-0.04em;">12</div>
+      <div style="font-size:16px; color:rgba(255,255,255,0.95); margin-top:10px; margin-bottom:18px;">posts/mês</div>
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+      <div style="font-size:13px; color:#fff; display:flex; flex-direction:column; gap:4px;">
+        <div>· Calendário editorial mensal</div>
+        <div>· Reels, carrosséis e stories</div>
+        <div>· Programação e monitoramento</div>
+      </div>
+    </div>
+
+    <!-- Tráfego Pago -->
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px 24px;">
+      <div style="font-size:18px; font-weight:600; line-height:1.15; margin-bottom:24px;">Tráfego Pago</div>
+      <div style="font-size:80px; font-weight:600; line-height:0.9; letter-spacing:-0.04em;">5</div>
+      <div style="font-size:16px; color:rgba(255,255,255,0.95); margin-top:10px; margin-bottom:18px;">campanhas ativas</div>
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+      <div style="font-size:13px; color:#fff; display:flex; flex-direction:column; gap:4px;">
+        <div>· Revisão a cada 15 dias</div>
+        <div>· Otimização de criativos</div>
+        <div>· Estratégia de lances</div>
+      </div>
+    </div>
+
+    <!-- SEO & Conteúdo -->
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px 24px;">
+      <div style="font-size:18px; font-weight:600; line-height:1.15; margin-bottom:24px;">SEO &amp; Conteúdo</div>
+      <div style="font-size:80px; font-weight:600; line-height:0.9; letter-spacing:-0.04em;">4</div>
+      <div style="font-size:16px; color:rgba(255,255,255,0.95); margin-top:10px; margin-bottom:18px;">artigos/mês</div>
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+      <div style="font-size:13px; color:#fff; display:flex; flex-direction:column; gap:4px;">
+        <div>· Pesquisa de palavras-chave</div>
+        <div>· Planejamento de conteúdo para o blog</div>
+        <div>· Google Meu Negócio</div>
+      </div>
+    </div>
+
+    <!-- CRM / RD Station -->
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px 24px;">
+      <div style="font-size:18px; font-weight:600; line-height:1.15; margin-bottom:24px;">CRM &amp; RD Station</div>
+      <div style="font-size:80px; font-weight:600; line-height:0.9; letter-spacing:-0.04em;">&#x221E;</div>
+      <div style="font-size:16px; color:rgba(255,255,255,0.95); margin-top:10px; margin-bottom:18px;">automação contínua</div>
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+      <div style="font-size:13px; color:#fff; display:flex; flex-direction:column; gap:4px;">
+        <div>· Réguas automáticas ativas</div>
+        <div>· Monitoramento de funil</div>
+        <div>· Nutrição e segmentação</div>
+      </div>
+    </div>
+
+    <!-- Análise & Planejamento -->
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px 24px;">
+      <div style="font-size:18px; font-weight:600; line-height:1.15; margin-bottom:24px;">Análise &amp; Planejamento</div>
+      <div style="font-size:80px; font-weight:600; line-height:0.9; letter-spacing:-0.04em;">1</div>
+      <div style="font-size:16px; color:rgba(255,255,255,0.95); margin-top:10px; margin-bottom:18px;">relatório/mês</div>
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+      <div style="font-size:13px; color:#fff; display:flex; flex-direction:column; gap:4px;">
+        <div>· Relatório mensal de resultados</div>
+        <div>· Calendário de conteúdo do mês</div>
+        <div>· Apresentação para diretoria</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>Operação de rotina</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 05 — DIVISOR · IMPLEMENTAÇÃO                                  -->
+<!-- ============================================================ -->
+<section data-screen-label="06 Divisor Implementação" style="padding:0; background:var(--paper); overflow:hidden;">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:600;">
+    <span>Astra · Planejamento de Marketing</span>
+    <span>Novas implementações</span>
+  </div>
+
+  <div style="position:absolute; left:100px; right:100px; top:50%; transform:translateY(-50%); z-index:2;">
+    <div class="label-blue" style="margin-bottom:36px;">Bloco 2 · Em paralelo</div>
+    <div style="font-weight:600; font-size:180px; line-height:0.9; letter-spacing:-0.045em; color:var(--ink);">
+      <span style="color:var(--astra-blue); font-weight:400;">Implementações.</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:32px; margin-top:48px;">
+      <div style="height:2px; background:var(--ink); width:120px;"></div>
+      <div style="font-weight:400; font-size:30px; color:var(--ink-soft);">O que estamos construindo e evoluindo para gerar mais resultado.</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:36px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700;">
+    <span>Astra · Planejamento de Marketing</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 06 — STATUS DAS IMPLEMENTAÇÕES                                -->
+<!-- ============================================================ -->
+<section data-screen-label="07 Status implementações">
+  <div class="mast" style="margin-bottom:28px;">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Novas implementações</span>
+  </div>
+
+  <div class="kicker" style="margin-bottom:16px;">Progresso das implementações e demandas pontuais</div>
+  <h2 class="title" style="font-size:64px; margin-bottom:24px;">O que estamos entregando.</h2>
+
+  <div style="display:flex; flex-direction:column; gap:0; flex:1;">
+
+    <!-- === DEMANDAS PONTUAIS · AGRISHOW === -->
+    <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); padding:8px 0 6px;">Demandas pontuais · Agrishow 2026</div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:8px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div style="font-size:17px; font-weight:600; color:var(--ink);">Design do estande</div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:100%; background:var(--astra-blue); border-radius:4px; display:flex; align-items:center; justify-content:center;"><span style="color:#fff; font-size:11px; font-weight:600;">Concluído</span></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--astra-blue); min-width:55px; text-align:right;">100%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:8px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div style="font-size:17px; font-weight:600; color:var(--ink);">Posts nos dias de feira</div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:100%; background:var(--astra-blue); border-radius:4px; display:flex; align-items:center; justify-content:center;"><span style="color:#fff; font-size:11px; font-weight:600;">Concluído</span></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--astra-blue); min-width:55px; text-align:right;">100%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:8px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div style="font-size:17px; font-weight:600; color:var(--ink);">Campanha de mídia durante a feira</div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:100%; background:var(--astra-blue); border-radius:4px; display:flex; align-items:center; justify-content:center;"><span style="color:#fff; font-size:11px; font-weight:600;">Concluído</span></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--astra-blue); min-width:55px; text-align:right;">100%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:8px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div style="font-size:17px; font-weight:600; color:var(--ink);">Vetorização de logos</div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:100%; background:var(--astra-blue); border-radius:4px; display:flex; align-items:center; justify-content:center;"><span style="color:#fff; font-size:11px; font-weight:600;">Concluído</span></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--astra-blue); min-width:55px; text-align:right;">100%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:8px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div style="font-size:17px; font-weight:600; color:var(--ink);">Panfletos e sacolas</div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:100%; background:var(--astra-blue); border-radius:4px; display:flex; align-items:center; justify-content:center;"><span style="color:#fff; font-size:11px; font-weight:600;">Concluído</span></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--astra-blue); min-width:55px; text-align:right;">100%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:8px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div style="font-size:17px; font-weight:600; color:var(--ink);">E-mails para leads da feira</div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:50%; background:var(--astra-blue); border-radius:4px; display:flex; align-items:center; padding:0 10px;"><span style="color:#fff; font-size:11px; font-weight:600;">Em andamento</span></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--astra-blue); min-width:55px; text-align:right;">50%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:8px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div style="font-size:17px; font-weight:600; color:var(--ink);">Remarketing pós-feira</div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:0%; background:var(--astra-blue); border-radius:4px;"></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--ink); min-width:55px; text-align:right;">0%</div>
+    </div>
+
+    <!-- === IMPLEMENTAÇÕES PLANEJADAS === -->
+    <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); padding:10px 0 4px;">Implementações planejadas</div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:12px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div>
+        <div style="font-size:17px; font-weight:600; color:var(--ink);">Automações de segmentos</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">72 e-mails criados · revisão final</div>
+      </div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:80%; background:var(--astra-blue); border-radius:4px; display:flex; align-items:center; padding:0 10px;"><span style="color:#fff; font-size:11px; font-weight:600;">Em revisão</span></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--astra-blue); min-width:55px; text-align:right;">80%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:12px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div>
+        <div style="font-size:17px; font-weight:600; color:var(--ink);">Integração RD + IntraNet</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">Sincronização de dados</div>
+      </div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:0%; background:var(--ink); border-radius:4px;"></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--ink); min-width:55px; text-align:right;">0%</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:12px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div>
+        <div style="font-size:17px; font-weight:600; color:var(--ink);">Páginas de produto e segmentos</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">Melhoria de conteúdo</div>
+      </div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:0%; background:var(--ink); border-radius:4px;"></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--ink); min-width:55px; text-align:right;">0%</div>
+    </div>
+    <div style="display:grid; grid-template-columns:340px 1fr auto; gap:24px; padding:12px 0; border-bottom:1px solid var(--line-soft); align-items:center;">
+      <div>
+        <div style="font-size:17px; font-weight:600; color:var(--ink);">Velocidade das páginas</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:2px;">Otimização de performance do site</div>
+      </div>
+      <div style="position:relative; height:22px; background:var(--astra-blue-soft); border-radius:4px; overflow:hidden;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:0%; background:var(--ink); border-radius:4px;"></div>
+      </div>
+      <div style="font-size:22px; font-weight:600; color:var(--ink); min-width:55px; text-align:right;">0%</div>
+    </div>
+
+
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>Novas implementações</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 07 — CALENDÁRIO MAIO 2026                                     -->
+<!-- ============================================================ -->
+<section data-screen-label="08 Calendário Maio">
+  <div class="mast" style="margin-bottom:28px;">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Maio 2026</span>
+  </div>
+
+  <div class="kicker" style="margin-bottom:12px;">O que a Astra recebe semana a semana</div>
+  <h2 class="title" style="font-size:64px; margin-bottom:28px;">Calendário de maio.</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; flex:1; min-height:0;">
+
+    <!-- SEMANA 01 -->
+    <div class="card-blue" style="padding:0; display:flex; flex-direction:column;">
+      <div style="padding:22px 22px 0;">
+        <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:16px;">
+          <div style="font-size:52px; font-weight:600; line-height:0.9; letter-spacing:-0.04em;">01</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.7); letter-spacing:0.12em; text-transform:uppercase;">4 a 8 mai</div>
+        </div>
+        <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+        <div style="font-size:13px; color:#fff; display:flex; flex-direction:column; gap:7px; padding-bottom:16px;">
+          <div><span style="font-weight:600;">Fechamento de abril</span><br><span style="opacity:0.8;">Apresentação de resultados para a diretoria</span></div>
+          <div><span style="font-weight:600;">E-mail marketing</span><br><span style="opacity:0.8;">Finalização das automações de segmentos</span></div>
+          <div><span style="font-weight:600;">Conteúdo do mês</span><br><span style="opacity:0.8;">Calendário editorial redes sociais e blog</span></div>
+          <div><span style="font-weight:600;">Script de produtos</span><br><span style="opacity:0.8;">Estrutura de informações por produto</span></div>
+          <div><span style="font-weight:600;">Remarketing Agrishow</span><br><span style="opacity:0.8;">Retargeting para visitantes da feira</span></div>
+          <div><span style="font-weight:600;">E-mails leads Agrishow</span><br><span style="opacity:0.8;">Disparos para contatos captados na feira</span></div>
+        </div>
+      </div>
+      <div style="margin-top:auto; padding:14px 22px; background:var(--paper-2); border-top:1px solid var(--line);">
+        <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px;">Presencial terça &amp; quinta</div>
+        <div style="font-size:13px; color:var(--ink); font-weight:600; line-height:1.35;">Alinhamento com Nivon sobre produtos, processos e agenda de gravações</div>
+      </div>
+    </div>
+
+    <!-- SEMANA 02 -->
+    <div class="card-blue" style="padding:0; display:flex; flex-direction:column;">
+      <div style="padding:22px 22px 0;">
+        <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:16px;">
+          <div style="font-size:52px; font-weight:600; line-height:0.9; letter-spacing:-0.04em;">02</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.7); letter-spacing:0.12em; text-transform:uppercase;">11 a 15 mai</div>
+        </div>
+        <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+        <div style="font-size:13px; color:#fff; display:flex; flex-direction:column; gap:7px; padding-bottom:16px;">
+          <div><span style="font-weight:600;">Artes de redes sociais</span><br><span style="opacity:0.8;">Primeiras peças visuais do mês</span></div>
+          <div><span style="font-weight:600;">Primeiros textos do blog</span><br><span style="opacity:0.8;">Artigos planejados na semana 1</span></div>
+          <div><span style="font-weight:600;">Páginas de produto</span><br><span style="opacity:0.8;">Primeiras páginas reescritas com novo script</span></div>
+          <div><span style="font-weight:600;">Revisão de campanhas</span><br><span style="opacity:0.8;">Ciclo quinzenal de otimização</span></div>
+          <div><span style="font-weight:600;">Integração RD + IntraNet</span><br><span style="opacity:0.8;">Início do levantamento técnico</span></div>
+        </div>
+      </div>
+      <div style="margin-top:auto; padding:14px 22px; background:var(--paper-2); border-top:1px solid var(--line);">
+        <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px;">Presencial terça &amp; quinta</div>
+        <div style="font-size:13px; color:var(--ink); font-weight:600; line-height:1.35;">Gravação de bancos em montagem e reforma para conteúdo</div>
+      </div>
+    </div>
+
+    <!-- SEMANA 03 -->
+    <div class="card-blue" style="padding:0; display:flex; flex-direction:column;">
+      <div style="padding:22px 22px 0;">
+        <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:16px;">
+          <div style="font-size:52px; font-weight:600; line-height:0.9; letter-spacing:-0.04em;">03</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.7); letter-spacing:0.12em; text-transform:uppercase;">18 a 22 mai</div>
+        </div>
+        <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+        <div style="font-size:13px; color:#fff; display:flex; flex-direction:column; gap:7px; padding-bottom:16px;">
+          <div><span style="font-weight:600;">Páginas de produto</span><br><span style="opacity:0.8;">Melhoria com fotos e vídeos gravados</span></div>
+          <div><span style="font-weight:600;">Blog</span><br><span style="opacity:0.8;">Publicação dos artigos do mês</span></div>
+          <div><span style="font-weight:600;">SEO</span><br><span style="opacity:0.8;">Otimização de páginas de produto</span></div>
+          <div><span style="font-weight:600;">Planejamento de junho</span><br><span style="opacity:0.8;">Ideias de conteúdo, pautas e calendário</span></div>
+        </div>
+      </div>
+      <div style="margin-top:auto; padding:14px 22px; background:var(--paper-2); border-top:1px solid var(--line);">
+        <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px;">Presencial terça &amp; quinta</div>
+        <div style="font-size:13px; color:var(--ink); font-weight:600; line-height:1.35;">Vídeos de peças, reposição e upload de conteúdo no site</div>
+      </div>
+    </div>
+
+    <!-- SEMANA 04 -->
+    <div class="card-blue" style="padding:0; display:flex; flex-direction:column;">
+      <div style="padding:22px 22px 0;">
+        <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:16px;">
+          <div style="font-size:52px; font-weight:600; line-height:0.9; letter-spacing:-0.04em;">04</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.7); letter-spacing:0.12em; text-transform:uppercase;">25 a 29 mai</div>
+        </div>
+        <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:14px;"></div>
+        <div style="font-size:13px; color:#fff; display:flex; flex-direction:column; gap:7px; padding-bottom:16px;">
+          <div><span style="font-weight:600;">Relatório de maio</span><br><span style="opacity:0.8;">Análise de resultados e métricas</span></div>
+          <div><span style="font-weight:600;">Revisão de campanhas</span><br><span style="opacity:0.8;">Segundo ciclo quinzenal de otimização</span></div>
+          <div><span style="font-weight:600;">Aprovação do plano de junho</span><br><span style="opacity:0.8;">Calendário finalizado e validado com a diretoria</span></div>
+        </div>
+      </div>
+      <div style="margin-top:auto; padding:14px 22px; background:var(--paper-2); border-top:1px solid var(--line);">
+        <div style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px;">Presencial terça &amp; quinta</div>
+        <div style="font-size:13px; color:var(--ink); font-weight:600; line-height:1.35;">Gravação de novos produtos finalizados na semana</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>Calendário mensal</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 08 — DIVISOR RESULTADOS ABRIL                                 -->
+<!-- ============================================================ -->
+<section data-screen-label="09 Overview Abril" style="padding:0; background:#0c41c6; color:#fff; overflow:hidden;">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:600;">
+    <span>Astra · Planejamento de Marketing</span>
+    <span>Overview mensal</span>
+  </div>
+
+  <div style="position:absolute; left:100px; right:100px; top:50%; transform:translateY(-50%); z-index:2;">
+    <div class="label" style="color:#fff; margin-bottom:36px;">Abril 2026</div>
+    <div style="font-weight:600; font-size:200px; line-height:0.9; letter-spacing:-0.045em;">
+      Overview<br>
+      <span style="color:#fff;">do mês.</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:32px; margin-top:48px;">
+      <div style="height:2px; background:#fff; width:120px;"></div>
+      <div style="font-weight:400; font-size:30px; color:rgba(255,255,255,0.7);">O que aconteceu, o que aprendemos e o que muda a partir de agora.</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:36px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:700;">
+    <span>Astra · Planejamento de Marketing</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 09 — RESULTADOS AGRISHOW                                      -->
+<!-- ============================================================ -->
+<section data-screen-label="10 Resultados Agrishow">
+  <div class="mast" style="margin-bottom:28px;">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Fechamento abril</span>
+  </div>
+
+  <div class="kicker" style="margin-bottom:12px;">Agrishow 2026</div>
+  <h2 class="title" style="font-size:64px; margin-bottom:32px;">Campanha da feira.</h2>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; flex:1; min-height:0;">
+
+    <!-- COLUNA ESQUERDA: ANÚNCIO DIGITAL -->
+    <div class="card" style="display:flex; flex-direction:column; padding:0;">
+      <div style="padding:28px 28px 24px;">
+        <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700; margin-bottom:24px;">Campanha de mídia durante a feira</div>
+
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:24px;">
+          <div>
+            <div style="font-size:42px; font-weight:600; letter-spacing:-0.03em; color:var(--astra-blue); line-height:1;">58.542</div>
+            <div style="font-size:13px; color:var(--muted); margin-top:4px;">impressões</div>
+          </div>
+          <div>
+            <div style="font-size:42px; font-weight:600; letter-spacing:-0.03em; color:var(--astra-blue); line-height:1;">38.083</div>
+            <div style="font-size:13px; color:var(--muted); margin-top:4px;">alcance</div>
+          </div>
+          <div>
+            <div style="font-size:42px; font-weight:600; letter-spacing:-0.03em; color:var(--astra-blue); line-height:1;">2.280</div>
+            <div style="font-size:13px; color:var(--muted); margin-top:4px;">cliques</div>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--line); padding-top:16px;">
+          <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:12px;">QR Codes nos panfletos</div>
+          <div style="display:flex; gap:32px;">
+            <div>
+              <span style="font-size:28px; font-weight:600; color:var(--ink);">17</span>
+              <span style="font-size:14px; color:var(--muted); margin-left:8px;">acessos tratores</span>
+            </div>
+            <div>
+              <span style="font-size:28px; font-weight:600; color:var(--ink);">9</span>
+              <span style="font-size:14px; color:var(--muted); margin-left:8px;">acessos caminhões</span>
+            </div>
+          </div>
+          <div style="font-size:13px; color:var(--muted); margin-top:8px;">26 acessos totais via QR Code — baixa conversão no impresso</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA: PRÓXIMOS PASSOS -->
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:28px;">
+      <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:700; margin-bottom:24px;">O que fazer com esses dados</div>
+
+      <div style="font-size:44px; font-weight:600; line-height:0.95; letter-spacing:-0.03em; margin-bottom:28px;">
+        38 mil pessoas<br>impactadas.
+      </div>
+
+      <div style="border-top:1px dotted rgba(255,255,255,0.3); padding-top:20px;"></div>
+
+      <div style="font-size:15px; color:#fff; display:flex; flex-direction:column; gap:14px;">
+        <div>
+          <span style="font-weight:600;">Remarketing</span><br>
+          <span style="opacity:0.8; font-size:14px;">Retargeting para quem interagiu com o anúncio e clicou no conteúdo da feira</span>
+        </div>
+        <div>
+          <span style="font-weight:600;">E-mail marketing para leads da feira</span><br>
+          <span style="opacity:0.8; font-size:14px;">Campanha de nutrição para a base de contatos captados no estande</span>
+        </div>
+        <div>
+          <span style="font-weight:600;">Público combinado</span><br>
+          <span style="opacity:0.8; font-size:14px;">Lista de leads da feira incluída como público personalizado nas plataformas de mídia paga</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>Fechamento abril</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 10 — RESULTADOS E-COMMERCE                                    -->
+<!-- ============================================================ -->
+<section data-screen-label="11 Resultados E-commerce">
+  <div class="mast" style="margin-bottom:28px;">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Fechamento abril</span>
+  </div>
+
+  <div class="kicker" style="margin-bottom:12px;">Resultados do e-commerce</div>
+  <h2 class="title" style="font-size:64px; margin-bottom:16px;">Performance jan — abr 2026.</h2>
+  <p class="lead" style="font-size:22px; margin-bottom:36px; max-width:1200px;">Volume de pedidos estável mesmo com investimento reduzido em mídia paga. A queda em faturamento reflete o mix de produto: abril concentrou vendas de peças (ticket menor) enquanto nos meses anteriores tivemos vendas de bancos e cadeiras.</p>
+
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; flex:1; min-height:0;">
+
+    <!-- SESSÕES -->
+    <div class="card" style="display:flex; flex-direction:column; padding:0;">
+      <div style="padding:28px 28px 20px;">
+        <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700; margin-bottom:16px;">Sessões</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line-soft); padding-bottom:12px;">
+            <span style="font-size:15px; color:var(--muted);">Janeiro</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--ink);">2.935</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line-soft); padding-bottom:12px;">
+            <span style="font-size:15px; color:var(--muted);">Fevereiro</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--astra-blue);">6.787</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line-soft); padding-bottom:12px;">
+            <span style="font-size:15px; color:var(--muted);">Março</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--ink);">5.404</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline;">
+            <span style="font-size:15px; color:var(--muted);">Abril</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--ink);">4.212</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:auto; padding:14px 28px; background:var(--paper-2); border-top:1px solid var(--line);">
+        <div style="font-size:12px; color:var(--muted);">Média jan–mar: <span style="font-weight:600; color:var(--ink);">5.042</span> sessões/mês</div>
+      </div>
+    </div>
+
+    <!-- VENDAS -->
+    <div class="card" style="display:flex; flex-direction:column; padding:0;">
+      <div style="padding:28px 28px 20px;">
+        <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700; margin-bottom:16px;">Total em vendas</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line-soft); padding-bottom:12px;">
+            <span style="font-size:15px; color:var(--muted);">Janeiro</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--ink);">R$ 6.609</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line-soft); padding-bottom:12px;">
+            <span style="font-size:15px; color:var(--muted);">Fevereiro</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--ink);">R$ 10.000</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line-soft); padding-bottom:12px;">
+            <span style="font-size:15px; color:var(--muted);">Março</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--astra-blue);">R$ 19.200</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline;">
+            <span style="font-size:15px; color:var(--muted);">Abril</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--ink);">R$ 3.892</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:auto; padding:14px 28px; background:var(--paper-2); border-top:1px solid var(--line);">
+        <div style="font-size:12px; color:var(--muted);">Abril: ticket médio menor · <span style="font-weight:600; color:var(--ink);">mix de peças</span></div>
+      </div>
+    </div>
+
+    <!-- PEDIDOS -->
+    <div class="card" style="display:flex; flex-direction:column; padding:0;">
+      <div style="padding:28px 28px 20px;">
+        <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700; margin-bottom:16px;">Pedidos</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line-soft); padding-bottom:12px;">
+            <span style="font-size:15px; color:var(--muted);">Janeiro</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--ink);">4</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line-soft); padding-bottom:12px;">
+            <span style="font-size:15px; color:var(--muted);">Fevereiro</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--ink);">6</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--line-soft); padding-bottom:12px;">
+            <span style="font-size:15px; color:var(--muted);">Março</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--astra-blue);">8</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline;">
+            <span style="font-size:15px; color:var(--muted);">Abril</span>
+            <span style="font-size:28px; font-weight:600; letter-spacing:-0.03em; color:var(--ink);">6</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:auto; padding:14px 28px; background:var(--paper-2); border-top:1px solid var(--line);">
+        <div style="font-size:12px; color:var(--muted);">Volume estável mesmo com <span style="font-weight:600; color:var(--ink);">menos mídia</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>Fechamento abril</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 11 — DIVISOR PLANO DE AÇÃO                                     -->
+<!-- ============================================================ -->
+<section data-screen-label="12 Divisor Plano de Ação" style="padding:0; background:var(--astra-blue); color:#fff; overflow:hidden;">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:600;">
+    <span>Astra · Planejamento de Marketing</span>
+    <span>Plano de ação</span>
+  </div>
+
+  <div style="position:absolute; left:100px; right:100px; top:50%; transform:translateY(-50%); z-index:2;">
+    <div class="label" style="color:rgba(255,255,255,0.85); margin-bottom:36px;">Bloco 3 · Maio 2026</div>
+    <div style="font-weight:600; font-size:200px; line-height:0.9; letter-spacing:-0.045em;">
+      Plano de<br>
+      <span style="font-weight:400;">ação.</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:32px; margin-top:48px;">
+      <div style="height:2px; background:#fff; width:120px;"></div>
+      <div style="font-weight:400; font-size:30px;">Tráfego pago, SEO, conteúdo e redes sociais.</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:36px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:700;">
+    <span>Astra · Planejamento de Marketing</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 12 — TRÁFEGO PAGO: ESTRATÉGIA                                 -->
+<!-- ============================================================ -->
+<section data-screen-label="13 Tráfego Pago">
+  <div class="mast" style="margin-bottom:28px;">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Plano de ação</span>
+  </div>
+
+  <div class="kicker" style="margin-bottom:12px;">Tráfego pago</div>
+  <h2 class="title" style="font-size:64px; margin-bottom:16px;">Ativação progressiva.</h2>
+  <p class="lead" style="font-size:22px; margin-bottom:36px; max-width:1300px;">Investimento moderado. Campanhas ativadas conforme as páginas de destino forem otimizadas. Sem página boa, não adianta rodar anúncio.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; flex:1; min-height:0;">
+
+    <!-- COLUNA ESQUERDA: O QUE RODA AGORA -->
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700;">Ativo agora</div>
+
+      <div class="card-blue" style="padding:24px 28px;">
+        <div style="font-size:18px; font-weight:600; margin-bottom:6px;">Google Shopping</div>
+        <div style="font-size:14px; color:rgba(255,255,255,0.8); line-height:1.4;">Público com intenção de compra alta. Roda independente de landing page porque direciona direto para o produto.</div>
+      </div>
+
+      <div class="card-blue" style="padding:24px 28px;">
+        <div style="font-size:18px; font-weight:600; margin-bottom:6px;">Remarketing Agrishow</div>
+        <div style="font-size:14px; color:rgba(255,255,255,0.8); line-height:1.4;">Retargeting para quem interagiu na feira + público personalizado com lista de leads captados no estande.</div>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA: ATIVAÇÃO PROGRESSIVA -->
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700;">Ativação conforme páginas ficam prontas</div>
+
+      <div class="card" style="padding:0;">
+        <div style="padding:20px 28px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:2px;">Google Ads · Search</div>
+              <div style="font-size:16px; font-weight:600;">Bancos para caminhões</div>
+            </div>
+            <div style="font-size:12px; color:var(--muted); background:var(--paper-2); padding:4px 12px; border-radius:999px;">Aguardando página</div>
+          </div>
+        </div>
+        <div style="padding:20px 28px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:2px;">Google Ads · Search</div>
+              <div style="font-size:16px; font-weight:600;">Bancos para máquinas agrícolas</div>
+            </div>
+            <div style="font-size:12px; color:var(--muted); background:var(--paper-2); padding:4px 12px; border-radius:999px;">Aguardando página</div>
+          </div>
+        </div>
+        <div style="padding:20px 28px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:2px;">Meta Ads</div>
+              <div style="font-size:16px; font-weight:600;">Bancos para caminhões</div>
+            </div>
+            <div style="font-size:12px; color:var(--muted); background:var(--paper-2); padding:4px 12px; border-radius:999px;">Aguardando página</div>
+          </div>
+        </div>
+        <div style="padding:20px 28px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:2px;">Meta Ads</div>
+              <div style="font-size:16px; font-weight:600;">Empilhadeiras</div>
+            </div>
+            <div style="font-size:12px; color:var(--muted); background:var(--paper-2); padding:4px 12px; border-radius:999px;">Aguardando página</div>
+          </div>
+        </div>
+        <div style="padding:20px 28px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:2px;">Meta Ads</div>
+              <div style="font-size:16px; font-weight:600;">Máquinas agrícolas</div>
+            </div>
+            <div style="font-size:12px; color:var(--muted); background:var(--paper-2); padding:4px 12px; border-radius:999px;">Aguardando página</div>
+          </div>
+        </div>
+        <div style="padding:20px 28px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:2px;">Meta Ads</div>
+              <div style="font-size:16px; font-weight:600;">Peças de reposição</div>
+            </div>
+            <div style="font-size:12px; color:var(--muted); background:var(--paper-2); padding:4px 12px; border-radius:999px;">Aguardando página</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>Plano de ação</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 12 — SEO & CONTEÚDO: ESTRATÉGIA                               -->
+<!-- ============================================================ -->
+<section data-screen-label="14 SEO e Conteúdo">
+  <div class="mast" style="margin-bottom:28px;">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Plano de ação</span>
+  </div>
+
+  <div class="kicker" style="margin-bottom:12px;">SEO &amp; Conteúdo</div>
+  <h2 class="title" style="font-size:64px; margin-bottom:32px;">Estratégia de blog.</h2>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; flex:1; min-height:0;">
+
+    <!-- COLUNA ESQUERDA: BASELINE + NÚMEROS -->
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700;">Baseline · Google Search Console · 3 meses</div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="card-blue" style="padding:20px 24px;">
+          <div style="font-size:36px; font-weight:600; letter-spacing:-0.03em; line-height:1;">2.750</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.8); margin-top:4px;">cliques</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px;">~917/mês</div>
+        </div>
+        <div class="card-blue" style="padding:20px 24px;">
+          <div style="font-size:36px; font-weight:600; letter-spacing:-0.03em; line-height:1;">122 mil</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.8); margin-top:4px;">impressões</div>
+        </div>
+        <div class="card-blue" style="padding:20px 24px;">
+          <div style="font-size:36px; font-weight:600; letter-spacing:-0.03em; line-height:1;">2,3%</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.8); margin-top:4px;">CTR média</div>
+        </div>
+        <div class="card-blue" style="padding:20px 24px;">
+          <div style="font-size:36px; font-weight:600; letter-spacing:-0.03em; line-height:1;">8.1</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.8); margin-top:4px;">posição média</div>
+        </div>
+      </div>
+
+      <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700; margin-top:4px;">Páginas para revisão</div>
+      <div class="card" style="padding:0; flex:1;">
+        <div style="padding:12px 20px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-size:14px; font-weight:600; color:var(--ink);">Bancos para empilhadeiras</div>
+            <div style="font-size:12px; color:var(--muted);">pos 10.9 · 48 imp</div>
+          </div>
+          <div style="font-size:12px; color:var(--ink-soft); margin-top:2px;">Quase na primeira página, revisar conteúdo</div>
+        </div>
+        <div style="padding:12px 20px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-size:14px; font-weight:600; color:var(--ink);">Trilho deslizante para banco</div>
+            <div style="font-size:12px; color:var(--muted);">pos 10.5 · 21 imp</div>
+          </div>
+          <div style="font-size:12px; color:var(--ink-soft); margin-top:2px;">Produto com demanda, melhorar página</div>
+        </div>
+        <div style="padding:12px 20px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-size:14px; font-weight:600; color:var(--ink);">Espuma para banco de caminhão</div>
+            <div style="font-size:12px; color:var(--muted);">pos 7.8 · 51 imp</div>
+          </div>
+          <div style="font-size:12px; color:var(--ink-soft); margin-top:2px;">Já na primeira página, otimizar para cliques</div>
+        </div>
+        <div style="padding:12px 20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-size:14px; font-weight:600; color:var(--ink);">Localizador por veículo</div>
+            <div style="font-size:12px; color:var(--astra-blue); font-weight:600;">pos 6–9</div>
+          </div>
+          <div style="font-size:12px; color:var(--ink-soft); margin-top:2px;">Centenas de páginas já ranqueando, revisar conteúdo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA: PLANO DE CONTEÚDO -->
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--astra-blue); font-weight:700;">Cluster de conteúdo · Maio</div>
+
+      <div class="card" style="padding:0; flex:1; display:flex; flex-direction:column;">
+        <!-- PILLAR -->
+        <div style="padding:20px 28px; border-bottom:1px solid var(--line); background:var(--astra-blue-tint);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--astra-blue); font-weight:700; margin-bottom:4px;">Pillar post</div>
+              <div style="font-size:17px; font-weight:600; color:var(--ink);">Bancos para caminhões</div>
+            </div>
+            <div style="font-size:12px; color:var(--astra-blue); background:var(--astra-blue-soft); padding:4px 12px; border-radius:999px; font-weight:600;">Página principal</div>
+          </div>
+        </div>
+        <!-- SUPPORT POSTS -->
+        <div style="padding:16px 28px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px;">Support</div>
+              <div style="font-size:15px; font-weight:600; color:var(--ink);">Banco pneumático vs mecânico caminhão</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 28px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px;">Support</div>
+              <div style="font-size:15px; font-weight:600; color:var(--ink);">Como instalar banco de caminhão</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 28px; border-bottom:1px solid var(--line-soft);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px;">Support</div>
+              <div style="font-size:15px; font-weight:600; color:var(--ink);">Ergonomia motorista caminhão NR-17</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 28px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px;">Support</div>
+              <div style="font-size:15px; font-weight:600; color:var(--ink);">Manutenção banco caminhão</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>Plano de ação</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 13 — REDES SOCIAIS: 12 IDEIAS DE CONTEÚDO                    -->
+<!-- ============================================================ -->
+<section data-screen-label="15 Redes Sociais · Calendário Maio">
+  <div class="mast" style="margin-bottom:20px;">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Plano de ação</span>
+  </div>
+
+  <div class="kicker" style="margin-bottom:8px;">Redes sociais · Maio 2026</div>
+  <h2 class="title" style="font-size:56px; margin-bottom:20px;">Calendário de conteúdo.</h2>
+
+  <!-- Header dias da semana -->
+  <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin-bottom:6px;">
+    <div style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:700; text-align:center;">Segunda</div>
+    <div style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:700; text-align:center;">Terça</div>
+    <div style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:700; text-align:center;">Quarta</div>
+    <div style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:700; text-align:center;">Quinta</div>
+    <div style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); font-weight:700; text-align:center;">Sexta</div>
+  </div>
+
+  <!-- Grade do mês -->
+  <div style="display:grid; grid-template-columns:repeat(5, 1fr); grid-template-rows:repeat(4, 1fr); gap:8px; flex:1; min-height:0;">
+
+    <!-- SEMANA 1: 5–9 mai · PRODUÇÃO -->
+    <div style="border:1px dashed var(--line); padding:10px 12px; display:flex; flex-direction:column; background:var(--paper-2); opacity:0.7;">
+      <div style="font-size:20px; font-weight:600; color:var(--muted); margin-bottom:6px;">5</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--muted); margin-bottom:3px;">Produção</div>
+      <div style="font-size:11px; color:var(--muted); line-height:1.3;">Criação de artes e textos</div>
+    </div>
+
+    <div style="border:1px dashed var(--line); padding:10px 12px; display:flex; flex-direction:column; background:var(--paper-2); opacity:0.7;">
+      <div style="font-size:20px; font-weight:600; color:var(--muted); margin-bottom:6px;">6</div>
+    </div>
+
+    <div style="border:1px dashed var(--line); padding:10px 12px; display:flex; flex-direction:column; background:var(--paper-2); opacity:0.7;">
+      <div style="font-size:20px; font-weight:600; color:var(--muted); margin-bottom:6px;">7</div>
+    </div>
+
+    <div style="border:1px dashed var(--line); padding:10px 12px; display:flex; flex-direction:column; background:var(--paper-2); opacity:0.7;">
+      <div style="font-size:20px; font-weight:600; color:var(--muted); margin-bottom:6px;">8</div>
+    </div>
+
+    <div style="border:1px dashed var(--line); padding:10px 12px; display:flex; flex-direction:column; background:var(--paper-2); opacity:0.7;">
+      <div style="font-size:20px; font-weight:600; color:var(--muted); margin-bottom:6px;">9</div>
+    </div>
+
+    <!-- SEMANA 2: 12–16 mai · 4 posts -->
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">12</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Estático</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Obrigado Agrishow 2026</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Fotos do estande e números da feira</div>
+    </div>
+
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">13</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Carrossel</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Banco universal é decisão de gestão</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Benefícios de ter bancos universais na frota</div>
+    </div>
+
+    <div style="border:1px solid var(--line-soft); padding:10px 12px; display:flex; flex-direction:column;">
+      <div style="font-size:20px; font-weight:600; color:var(--muted); margin-bottom:6px;">14</div>
+    </div>
+
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">15</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Stories</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Localizador por veículo</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Divulgação com link direto pro localizador</div>
+    </div>
+
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">16</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Estático</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">3 cuidados que aumentam a vida útil do banco</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Conteúdo pronto — dicas práticas de manutenção</div>
+    </div>
+
+    <!-- SEMANA 3: 19–23 mai · 4 posts (reels começam) -->
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">19</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Reel</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Reforma de banco</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Antes e depois — bastidores da fábrica</div>
+    </div>
+
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">20</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Estático</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Como o seu operador sai da cabine no fim do dia?</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Provocação sobre ergonomia e produtividade</div>
+    </div>
+
+    <div style="border:1px solid var(--line-soft); padding:10px 12px; display:flex; flex-direction:column;">
+      <div style="font-size:20px; font-weight:600; color:var(--muted); margin-bottom:6px;">21</div>
+    </div>
+
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">22</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Carrossel</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Visitas técnicas da equipe</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Registro de instalação e suporte nos clientes</div>
+    </div>
+
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">23</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Reel</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Instalação de peças de reposição</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Troca de espuma, válvula ou trilho</div>
+    </div>
+
+    <!-- SEMANA 4: 26–30 mai · 4 posts -->
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">26</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Estático</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">30 anos movendo o Brasil</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Institucional: história, 9 segmentos, autoridade</div>
+    </div>
+
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">27</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Carrossel</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Peças originais ISRI e Grammer</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Espumas, válvulas, trilhos — qualidade original</div>
+    </div>
+
+    <div style="border:1px solid var(--line-soft); padding:10px 12px; display:flex; flex-direction:column;">
+      <div style="font-size:20px; font-weight:600; color:var(--muted); margin-bottom:6px;">28</div>
+    </div>
+
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">29</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Estático</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Bancos para máquinas agrícolas</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Tratores, colheitadeiras, pulverizadores</div>
+    </div>
+
+    <div style="border:1px solid var(--line); padding:10px 12px; display:flex; flex-direction:column; background:#fff;">
+      <div style="font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px;">30</div>
+      <div style="font-size:9px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:var(--astra-blue); margin-bottom:3px;">Estático</div>
+      <div style="font-size:12px; font-weight:600; color:var(--ink); line-height:1.3;">Serviço de treinamento</div>
+      <div style="font-size:10px; color:var(--muted); line-height:1.3; margin-top:2px;">Capacitação de operadores e frotistas</div>
+    </div>
+
+  </div>
+
+  <!-- Legenda -->
+  <div style="display:flex; gap:24px; margin-top:12px; align-items:center;">
+    <div style="display:flex; align-items:center; gap:6px;"><div style="width:10px; height:10px; background:var(--paper-2); border:1px dashed var(--line); border-radius:2px;"></div><span style="font-size:11px; color:var(--muted); font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Produção</span></div>
+    <div style="display:flex; align-items:center; gap:6px;"><div style="width:10px; height:10px; background:var(--astra-blue); border-radius:2px;"></div><span style="font-size:11px; color:var(--muted); font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Estático × 6</span></div>
+    <div style="display:flex; align-items:center; gap:6px;"><div style="width:10px; height:10px; background:var(--astra-blue); border-radius:2px; opacity:0.6;"></div><span style="font-size:11px; color:var(--muted); font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Carrossel × 3</span></div>
+    <div style="display:flex; align-items:center; gap:6px;"><div style="width:10px; height:10px; background:var(--astra-blue); border-radius:2px; opacity:0.3;"></div><span style="font-size:11px; color:var(--muted); font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Reel × 2</span></div>
+    <div style="display:flex; align-items:center; gap:6px;"><div style="width:10px; height:10px; background:none; border:2px solid var(--astra-blue); border-radius:2px;"></div><span style="font-size:11px; color:var(--muted); font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Stories × 1</span></div>
+    <div style="margin-left:auto; font-size:12px; color:var(--muted);">Datas sujeitas a ajuste conforme programação da fábrica</div>
+  </div>
+
+  <div class="foot">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>Plano de ação</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 14 — FECHAMENTO                                               -->
+<!-- ============================================================ -->
+<section data-screen-label="16 Fechamento" style="padding:0; background:var(--paper);">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; z-index:2;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <svg width="42" height="42" viewBox="0 0 272.9 259.3">
+        <path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/>
+      </svg>
+      <span style="font-weight:700; font-size:18px; letter-spacing:0.02em; color:var(--ink);">Astra</span>
+    </div>
+    <span class="label">Planejamento de Marketing · Maio 2026</span>
+  </div>
+
+  <div style="position:absolute; left:100px; right:100px; top:46%; transform:translateY(-50%); z-index:2;">
+    <div class="label-blue" style="margin-bottom:32px;">Próximos passos</div>
+    <div style="font-weight:600; font-size:120px; line-height:0.92; letter-spacing:-0.045em; color:var(--ink);">
+      Rotina garantida.<br>
+      <span style="color:var(--astra-blue); font-weight:400;">Evolução constante.</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:32px; margin-top:48px;">
+      <div style="height:2px; background:var(--ink); width:120px;"></div>
+      <div style="font-weight:400; font-size:26px; color:var(--ink-soft); max-width:900px; line-height:1.4;">Maio é o mês de estabilizar a operação de rotina e avançar nas implementações. Em junho, apresentamos os resultados e o plano do próximo ciclo.</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:80px; left:100px; right:100px; display:grid; grid-template-columns:repeat(3, 1fr); gap:32px; z-index:2; color:var(--ink);">
+    <div>
+      <div class="label" style="margin-bottom:10px;">Presencial</div>
+      <div style="font-size:22px; font-weight:600;">Terça e quinta</div>
+      <div class="small">Toda semana na Astra</div>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:10px;">Relatório</div>
+      <div style="font-size:22px; font-weight:600;">Última semana de maio</div>
+      <div class="small">Fechamento + plano de junho</div>
+    </div>
+    <div>
+      <div class="label" style="margin-bottom:10px;">Contato</div>
+      <div style="font-size:22px; font-weight:600;">Guilherme Nivon</div>
+      <div class="small">Gestor da conta</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:36px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; z-index:2;">
+    <span>15 / 16</span>
+    <span>Maio · 2026</span>
+  </div>
+</section>
+
+<!-- OLD SLIDES REMOVED -->
+<!-- ============================================================ -->
+<section data-screen-label="06 Gantt Implantação" style="display:none;">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>06 / 14</span>
+  </div>
+
+  <div class="kicker">Cronograma do mês 1, módulo a módulo</div>
+  <h2 class="title" style="margin-bottom:48px;">A linha do tempo da implantação.</h2>
+
+  <div class="gantt-grid head">
+    <div class="gantt-cell-head first">Frente</div>
+    <div class="gantt-cell-head">Sem 01 · Fundação</div>
+    <div class="gantt-cell-head">Sem 02 · Aquisição</div>
+    <div class="gantt-cell-head">Sem 03 · Funil</div>
+    <div class="gantt-cell-head">Sem 04 · Marca</div>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; gap:0;">
+    <div class="gantt-row">
+      <div class="gantt-label"><div class="gantt-label-name">Setup técnico</div><div class="gantt-label-sub">Acessos · Pixel · GA4 · Looker</div></div>
+      <div class="gantt-track"><div class="gantt-bar ink" style="left:4%; width:92%;">Configuração + validação</div></div>
+      <div class="gantt-track"></div>
+      <div class="gantt-track"></div>
+      <div class="gantt-track"></div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label"><div class="gantt-label-name">Tráfego pago</div><div class="gantt-label-sub">Google Ads + Meta Ads</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:60%; width:40%;">Briefing</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">8 campanhas no ar</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">Otimização</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">Otimização</div></div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label"><div class="gantt-label-name">Redes sociais</div><div class="gantt-label-sub">5 canais ativos</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:50%; width:50%;">Linha visual</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">1ª onda de conteúdo</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">Cadência plena</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">Cadência plena</div></div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label"><div class="gantt-label-name">CRM &amp; funil</div><div class="gantt-label-sub">E-mail + WhatsApp</div></div>
+      <div class="gantt-track"></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:40%; width:60%;">Estrutura das réguas</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">4 réguas no ar</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">Operação automática</div></div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label"><div class="gantt-label-name">SEO &amp; conteúdo</div><div class="gantt-label-sub">Blog + páginas de produto</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:70%; width:30%;">Pesquisa</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">10 produtos otimizados</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">+1 artigo técnico</div></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:0; width:100%;">+1 artigo técnico</div></div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label"><div class="gantt-label-name">Marca &amp; institucional</div><div class="gantt-label-sub">Calendário · Influencer</div></div>
+      <div class="gantt-track"></div>
+      <div class="gantt-track"></div>
+      <div class="gantt-track"><div class="gantt-bar" style="left:40%; width:60%;">Mapeamento de criadores</div></div>
+      <div class="gantt-track"><div class="gantt-bar gold" style="left:0; width:100%;">Calendário 90 dias + relatório</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Bloco 1 · Implantação</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>06 / 14</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 07 — ENTREGÁVEIS-CHAVE DA IMPLANTAÇÃO                         -->
+<!-- ============================================================ -->
+<section data-screen-label="07 Entregáveis Implantação" style="display:none;">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Bloco 1 · Implantação · 07 / 17</span>
+  </div>
+
+  <div class="kicker">O que a Astra recebe no primeiro mês</div>
+  <h2 class="title" style="margin-bottom:48px;">Entregáveis do mês de implantação.</h2>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; flex:1;">
+    <div>
+      <div class="label-blue" style="margin-bottom:18px;">Entregáveis técnicos</div>
+      <div class="deliv">
+        <div class="when">D+7</div>
+        <div>
+          <div class="what">Stack técnico operacional</div>
+          <div class="what-sub">GA4, Looker Studio, Pixel, conversões.</div>
+        </div>
+        <div class="who">Tec</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+10</div>
+        <div>
+          <div class="what">Manual visual aplicado</div>
+          <div class="what-sub">Templates de redes, e-mail e papelaria digital.</div>
+        </div>
+        <div class="who">Marca</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+14</div>
+        <div>
+          <div class="what">8 campanhas no ar</div>
+          <div class="what-sub">Google Search, Performance Max e Meta retargeting.</div>
+        </div>
+        <div class="who">Tráfego</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+21</div>
+        <div>
+          <div class="what">4 réguas de CRM no ar</div>
+          <div class="what-sub">Boas-vindas, carrinho, newsletter, pós-venda.</div>
+        </div>
+        <div class="who">CRM</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="label-blue" style="margin-bottom:18px;">Entregáveis de conteúdo &amp; gestão</div>
+      <div class="deliv">
+        <div class="when">D+14</div>
+        <div>
+          <div class="what">Calendário editorial 90 dias</div>
+          <div class="what-sub">Pautas, datas e formatos por canal.</div>
+        </div>
+        <div class="who">Conteúdo</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+21</div>
+        <div>
+          <div class="what">10 produtos otimizados (SEO)</div>
+          <div class="what-sub">Descrição, alt-text, schema, FAQs.</div>
+        </div>
+        <div class="who">SEO</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+24</div>
+        <div>
+          <div class="what">2 artigos técnicos no blog</div>
+          <div class="what-sub">Pautas-chave por modelo de veículo.</div>
+        </div>
+        <div class="who">SEO</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+30</div>
+        <div>
+          <div class="what">Relatório executivo do mês 1</div>
+          <div class="what-sub">Vendas atribuídas, CAC, ROAS, learnings.</div>
+        </div>
+        <div class="who">Gestão</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Bloco 1 · Implantação</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>07 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 08 — INVESTIMENTO IMPLANTAÇÃO                                 -->
+<!-- ============================================================ -->
+<section data-screen-label="08 Investimento Mês 1" style="display:none;">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Bloco 1 · Implantação · 08 / 17</span>
+  </div>
+
+  <div class="kicker">Investimento e expectativa do mês 1</div>
+  <h2 class="title" style="margin-bottom:40px;">O que esperar do primeiro mês.</h2>
+
+  <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:48px; flex:1;">
+    <div>
+      <div class="label" style="margin-bottom:18px;">Mês 1 · Marcos esperados</div>
+      <table class="editorial">
+        <thead>
+          <tr>
+            <th style="width:30%;">Frente</th>
+            <th>Marco do mês 1</th>
+            <th style="width:18%; text-align:right;">Indicador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tráfego pago</strong></td>
+            <td>Primeiras vendas atribuídas; baseline de CPA por modelo.</td>
+            <td style="text-align:right;">Baseline CPA</td>
+          </tr>
+          <tr>
+            <td><strong>Redes sociais</strong></td>
+            <td>5 canais ativos; identidade aplicada; primeiros 18 conteúdos.</td>
+            <td style="text-align:right;">+18 posts</td>
+          </tr>
+          <tr>
+            <td><strong>CRM</strong></td>
+            <td>Réguas no ar; reativação de leads frios em curso.</td>
+            <td style="text-align:right;">4 réguas</td>
+          </tr>
+          <tr>
+            <td><strong>SEO</strong></td>
+            <td>10 produtos otimizados; 2 artigos publicados.</td>
+            <td style="text-align:right;">12 páginas</td>
+          </tr>
+          <tr>
+            <td><strong>Marca &amp; 360º</strong></td>
+            <td>Calendário 90 dias e short-list de influenciadores.</td>
+            <td style="text-align:right;">12 criadores</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-tint" style="display:flex; flex-direction:column; padding:40px;">
+      <div class="label-blue" style="margin-bottom:14px;">Premissa do mês 1</div>
+      <div style="font-size:38px; font-weight:600; line-height:1.05; letter-spacing:-0.02em; margin-bottom:24px;">
+        O mês 1 é fundação.<br>
+        <span style="color:var(--astra-blue); font-weight:400;">A escala começa no mês 2.</span>
+      </div>
+      <div style="font-size:18px; line-height:1.5; color:var(--ink-soft); margin-bottom:24px;">
+        O objetivo do mês de implantação é colocar todos os módulos em funcionamento e estabelecer o baseline de cada indicador. As metas de crescimento entram em vigor a partir do segundo ciclo.
+      </div>
+      <div class="rule" style="margin-bottom:24px;"></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div>
+          <div class="label" style="margin-bottom:6px;">Meta · ROAS</div>
+          <div style="font-size:36px; font-weight:600; color:var(--astra-blue);">5×</div>
+          <div class="small">a partir do mês 2</div>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:6px;">Meta · vendas</div>
+          <div style="font-size:36px; font-weight:600; color:var(--astra-blue);">+35%</div>
+          <div class="small">no trimestre seguinte</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Bloco 1 · Implantação</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>08 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 09 — DIVISOR · OPERAÇÃO RECORRENTE                            -->
+<!-- ============================================================ -->
+<section data-screen-label="09 Divisor Operação" style="display:none; padding:0; background:var(--ink); color:#fff; overflow:hidden;">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:600;">
+    <span>Astra · Planejamento de Marketing</span>
+    <span>Bloco 2 · Páginas 09 — 15</span>
+    <span>09 / 17</span>
+  </div>
+
+  <div style="position:absolute; left:100px; right:100px; top:50%; transform:translateY(-50%); z-index:2;">
+    <div class="label" style="color:rgba(255,255,255,0.85); margin-bottom:36px;">Bloco 2 · A partir do mês 2</div>
+    <div style="font-weight:600; font-size:240px; line-height:0.9; letter-spacing:-0.045em;">
+      Operação<br>
+      <span style="color:var(--astra-blue); font-weight:400;">recorrente.</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:32px; margin-top:48px;">
+      <div style="height:2px; background:var(--astra-blue); width:120px;"></div>
+      <div style="font-weight:400; font-size:30px;">Quatro semanas, quatro entregas-chave. Toda vez.</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:36px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:700;">
+    <span>Astra · Planejamento de Marketing</span>
+    <span>09 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 10 — CICLO MENSAL — VISÃO GERAL                               -->
+<!-- ============================================================ -->
+<section data-screen-label="10 Ciclo mensal" style="display:none;">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Bloco 2 · Operação · 10 / 17</span>
+  </div>
+
+  <div class="kicker">O ritmo que vira hábito</div>
+  <h2 class="title" style="margin-bottom:32px;">O ciclo mensal em uma página.</h2>
+
+  <p class="lead" style="max-width:1300px; margin-bottom:36px;">
+    A partir do mês 2, a operação ganha cadência semanal previsível. Cada semana tem um foco claro e um entregável visível para a Astra — todo mês, sem variação.
+  </p>
+
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; flex:1; min-height:0;">
+    <div class="week-col">
+      <div class="week-col-head is-blue">
+        <div class="week-num">Semana 01</div>
+        <div class="week-title">Performance &amp; ROI</div>
+      </div>
+      <div class="week-body">
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Relatório do mês anterior fechado e enviado à diretoria</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Novas campanhas de Ads no ar (Google + Meta)</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Reunião de leitura com diretoria</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Calibração de orçamento por canal</span></div>
+      </div>
+      <div class="week-deliv">
+        <div class="week-deliv-label">Entregável</div>
+        Relatório executivo + campanhas no ar
+      </div>
+    </div>
+
+    <div class="week-col">
+      <div class="week-col-head is-blue">
+        <div class="week-num">Semana 02</div>
+        <div class="week-title">Autoridade &amp; SEO</div>
+      </div>
+      <div class="week-body">
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">2 artigos técnicos profundos publicados no blog</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">10 páginas de produto otimizadas</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Lote de páginas programáticas regionais</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Acompanhamento de keywords no Search Console</span></div>
+      </div>
+      <div class="week-deliv">
+        <div class="week-deliv-label">Entregável</div>
+        +2 artigos · +10 produtos refinados
+      </div>
+    </div>
+
+    <div class="week-col">
+      <div class="week-col-head is-blue">
+        <div class="week-num">Semana 03</div>
+        <div class="week-title">Relacionamento &amp; Vendas</div>
+      </div>
+      <div class="week-body">
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Campanha de impacto no CRM (e-mail + WhatsApp)</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Vídeo técnico do mês — review de produto-destaque</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Pico de tráfego nas páginas de produto</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Acompanhamento de vendas em tempo real</span></div>
+      </div>
+      <div class="week-deliv">
+        <div class="week-deliv-label">Entregável</div>
+        Campanha de impacto + vídeo técnico
+      </div>
+    </div>
+
+    <div class="week-col">
+      <div class="week-col-head is-ink">
+        <div class="week-num">Semana 04</div>
+        <div class="week-title">Marca &amp; Planejamento</div>
+      </div>
+      <div class="week-body">
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Planejamento detalhado do mês seguinte</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Reforço institucional nas redes sociais</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Conteúdo de bastidor / fábrica</span></div>
+        <div class="week-item"><span class="week-item-mark"></span><span class="week-item-text">Validação do calendário com a diretoria</span></div>
+      </div>
+      <div class="week-deliv">
+        <div class="week-deliv-label">Entregável</div>
+        Plano do próximo mês assinado
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Bloco 2 · Operação recorrente</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>10 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 11 — DETALHE DAS ENTREGAS SEMANAIS                            -->
+<!-- ============================================================ -->
+<section data-screen-label="11 Entregas semanais" style="display:none;">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Bloco 2 · Operação · 11 / 17</span>
+  </div>
+
+  <div class="kicker">Entregáveis semanais — visão consolidada</div>
+  <h2 class="title" style="margin-bottom:36px;">O que a Astra recebe<br>todo mês, semana a semana.</h2>
+
+  <table class="editorial" style="font-size:18px;">
+    <thead>
+      <tr>
+        <th style="width:14%;">Semana</th>
+        <th style="width:20%;">Foco</th>
+        <th>Entregáveis fixos</th>
+        <th style="width:18%;">Indicador-chave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:24px;">SEM 01</strong></td>
+        <td><strong>Performance &amp; ROI</strong></td>
+        <td>Relatório executivo do mês anterior · Novas campanhas no ar · Reunião com diretoria · Plano de mídia da semana.</td>
+        <td>ROAS · CAC</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:24px;">SEM 02</strong></td>
+        <td><strong>Autoridade &amp; SEO</strong></td>
+        <td>2 artigos técnicos · 10 produtos otimizados · Lote de páginas programáticas · Posts diários nas redes.</td>
+        <td>Posicionamento orgânico</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:24px;">SEM 03</strong></td>
+        <td><strong>Relacionamento &amp; Vendas</strong></td>
+        <td>Campanha de impacto (e-mail + WhatsApp) · Vídeo técnico do mês · Otimização de réguas · Posts diários.</td>
+        <td>Vendas atribuídas</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:24px;">SEM 04</strong></td>
+        <td><strong>Marca &amp; Planejamento</strong></td>
+        <td>Planejamento do mês seguinte · Reforço institucional · Bastidor de fábrica · Validação com a diretoria.</td>
+        <td>Calendário aprovado</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr style="border-top:2px solid var(--ink);">
+        <td colspan="2" style="padding-top:22px; font-size:20px;"><strong>Total mensal · estável</strong></td>
+        <td style="padding-top:22px; font-size:18px;">
+          <strong>≈ 22 posts · 2 artigos · 10 produtos otimizados · 1 vídeo técnico · 4 réguas ativas · 1 relatório · 1 plano</strong>
+        </td>
+        <td style="padding-top:22px;"><strong style="color:var(--astra-blue);">Cadência fixa</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="foot">
+    <span>Bloco 2 · Operação recorrente</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>11 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 12 — RITUAIS DE GESTÃO                                        -->
+<!-- ============================================================ -->
+<section data-screen-label="12 Rituais de gestão" style="display:none;">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Bloco 2 · Operação · 12 / 17</span>
+  </div>
+
+  <div class="kicker">Rituais de gestão com a Astra</div>
+  <h2 class="title" style="margin-bottom:36px;">Como mantemos<br>a Astra sempre informada.</h2>
+
+  <p class="lead" style="max-width:1300px; margin-bottom:48px;">
+    A operação prevê presença constante junto à Astra — duas visitas presenciais por semana ao escritório, mais reuniões fixas de leitura. A diretoria nunca fica sem informação.
+  </p>
+
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; flex:1;">
+    <div class="card" style="padding:32px; display:flex; flex-direction:column;">
+      <div class="label-blue" style="margin-bottom:14px;">Toda semana · Terça</div>
+      <div style="font-size:30px; font-weight:600; line-height:1.05; letter-spacing:-0.02em; margin-bottom:14px;">Visita presencial · Performance</div>
+      <div class="body" style="font-size:17px;">Leitura semanal de campanhas, ajustes de orçamento, alinhamento com vendas.</div>
+      <div class="rule" style="margin-top:auto; margin-bottom:14px;"></div>
+      <div class="label-blue">90 min · presencial</div>
+    </div>
+    <div class="card" style="padding:32px; display:flex; flex-direction:column;">
+      <div class="label-blue" style="margin-bottom:14px;">Toda semana · Quinta</div>
+      <div style="font-size:30px; font-weight:600; line-height:1.05; letter-spacing:-0.02em; margin-bottom:14px;">Visita presencial · Conteúdo</div>
+      <div class="body" style="font-size:17px;">Validação de pautas, captação de bastidores, gravação de vídeos com o time técnico.</div>
+      <div class="rule" style="margin-top:auto; margin-bottom:14px;"></div>
+      <div class="label-blue">120 min · presencial</div>
+    </div>
+    <div class="card" style="padding:32px; display:flex; flex-direction:column;">
+      <div class="label-blue" style="margin-bottom:14px;">Toda semana 01</div>
+      <div style="font-size:30px; font-weight:600; line-height:1.05; letter-spacing:-0.02em; margin-bottom:14px;">Reunião de leitura</div>
+      <div class="body" style="font-size:17px;">Apresentação do relatório do mês anterior à diretoria — KPIs, learnings e plano.</div>
+      <div class="rule" style="margin-top:auto; margin-bottom:14px;"></div>
+      <div class="label-blue">60 min · diretoria</div>
+    </div>
+    <div class="card-blue" style="padding:32px; display:flex; flex-direction:column;">
+      <div class="label" style="color:rgba(255,255,255,0.85); margin-bottom:14px;">Toda semana 04</div>
+      <div style="font-size:30px; font-weight:600; line-height:1.05; letter-spacing:-0.02em; margin-bottom:14px;">Aprovação do mês seguinte</div>
+      <div style="font-size:17px; line-height:1.45;">Plano detalhado do próximo mês validado pela diretoria antes da virada.</div>
+      <div style="height:1px; background:rgba(255,255,255,0.2); margin-top:auto; margin-bottom:14px;"></div>
+      <div class="label" style="color:rgba(255,255,255,0.85);">60 min · diretoria</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Bloco 2 · Operação recorrente</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>12 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 13 — KPIs                                                     -->
+<!-- ============================================================ -->
+<section data-screen-label="13 KPIs" style="display:none;">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Bloco 2 · Operação · 13 / 17</span>
+  </div>
+
+  <div class="kicker">Como mediremos sucesso</div>
+  <h2 class="title" style="margin-bottom:48px;">KPIs reportados todo mês.</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; flex:1;">
+    <div class="card" style="display:flex; flex-direction:column; padding:32px;">
+      <div style="font-size:14px; font-weight:700; letter-spacing:0.16em; color:var(--astra-blue); text-transform:uppercase; margin-bottom:14px;">KPI 01</div>
+      <div style="font-size:28px; font-weight:600; line-height:1.05; margin-bottom:18px;">Vendas atribuídas</div>
+      <div class="body" style="font-size:16px;">Faturamento direto rastreado a Ads, e-mail e WhatsApp.</div>
+      <div class="rule" style="margin:auto 0 16px;"></div>
+      <div class="label-blue" style="margin-bottom:6px;">Meta · trimestre</div>
+      <div style="font-size:42px; font-weight:600; color:var(--ink); letter-spacing:-0.02em;">+35%</div>
+    </div>
+    <div class="card" style="display:flex; flex-direction:column; padding:32px;">
+      <div style="font-size:14px; font-weight:700; letter-spacing:0.16em; color:var(--astra-blue); text-transform:uppercase; margin-bottom:14px;">KPI 02</div>
+      <div style="font-size:28px; font-weight:600; line-height:1.05; margin-bottom:18px;">ROAS</div>
+      <div class="body" style="font-size:16px;">Retorno sobre cada real investido em mídia paga.</div>
+      <div class="rule" style="margin:auto 0 16px;"></div>
+      <div class="label-blue" style="margin-bottom:6px;">Meta · mensal</div>
+      <div style="font-size:42px; font-weight:600; color:var(--ink); letter-spacing:-0.02em;">5×</div>
+    </div>
+    <div class="card" style="display:flex; flex-direction:column; padding:32px;">
+      <div style="font-size:14px; font-weight:700; letter-spacing:0.16em; color:var(--astra-blue); text-transform:uppercase; margin-bottom:14px;">KPI 03</div>
+      <div style="font-size:28px; font-weight:600; line-height:1.05; margin-bottom:18px;">Crescimento orgânico</div>
+      <div class="body" style="font-size:16px;">Posições no Google em termos-chave por modelo.</div>
+      <div class="rule" style="margin:auto 0 16px;"></div>
+      <div class="label-blue" style="margin-bottom:6px;">Meta · 90 dias</div>
+      <div style="font-size:42px; font-weight:600; color:var(--ink); letter-spacing:-0.02em;">Top 3</div>
+    </div>
+    <div class="card-blue" style="display:flex; flex-direction:column; padding:32px;">
+      <div style="font-size:14px; font-weight:700; letter-spacing:0.16em; color:rgba(255,255,255,0.85); text-transform:uppercase; margin-bottom:14px;">KPI 04</div>
+      <div style="font-size:28px; font-weight:600; line-height:1.05; margin-bottom:18px;">Engajamento de base</div>
+      <div style="font-size:16px; opacity:0.9; line-height:1.4;">Abertura de e-mails &amp; crescimento de seguidores qualificados.</div>
+      <div style="height:1px; background:rgba(255,255,255,0.2); margin:auto 0 16px;"></div>
+      <div class="label" style="color:rgba(255,255,255,0.85); margin-bottom:6px;">Meta · abertura</div>
+      <div style="font-size:42px; font-weight:600; letter-spacing:-0.02em;">&gt; 32%</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Bloco 2 · Operação recorrente</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>13 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 14 — VISÃO 90 DIAS                                            -->
+<!-- ============================================================ -->
+<section data-screen-label="14 Visão 90 dias" style="display:none;">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Bloco 2 · Operação · 14 / 17</span>
+  </div>
+
+  <div class="kicker">A trajetória dos primeiros 90 dias</div>
+  <h2 class="title" style="margin-bottom:48px;">Da fundação à escala.</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; flex:1;">
+    <div class="card" style="padding:40px; display:flex; flex-direction:column;">
+      <div class="label-blue" style="margin-bottom:14px;">Mês 01</div>
+      <div style="font-size:42px; font-weight:600; line-height:1; letter-spacing:-0.02em; margin-bottom:18px;">Fundação</div>
+      <div class="body" style="font-size:18px;">Stack técnico no ar, identidade aplicada, primeiras campanhas, réguas de CRM e baseline de KPIs.</div>
+      <div class="rule" style="margin:24px 0;"></div>
+      <div style="font-size:14px; line-height:1.6;">
+        <strong style="color:var(--ink);">Output:</strong> 8 campanhas · 4 réguas · 18 posts · 2 artigos · 10 produtos otimizados.
+      </div>
+    </div>
+    <div class="card" style="padding:40px; display:flex; flex-direction:column;">
+      <div class="label-blue" style="margin-bottom:14px;">Mês 02</div>
+      <div style="font-size:42px; font-weight:600; line-height:1; letter-spacing:-0.02em; margin-bottom:18px;">Aceleração</div>
+      <div class="body" style="font-size:18px;">Ciclo recorrente em pleno funcionamento, primeira otimização real de orçamento, primeiras parcerias com criadores.</div>
+      <div class="rule" style="margin:24px 0;"></div>
+      <div style="font-size:14px; line-height:1.6;">
+        <strong style="color:var(--ink);">Output:</strong> 22 posts · 2 artigos · 10 produtos · 1 vídeo · primeira campanha de impacto.
+      </div>
+    </div>
+    <div class="card-blue" style="padding:40px; display:flex; flex-direction:column;">
+      <div class="label" style="color:rgba(255,255,255,0.85); margin-bottom:14px;">Mês 03</div>
+      <div style="font-size:42px; font-weight:600; line-height:1; letter-spacing:-0.02em; margin-bottom:18px;">Escala</div>
+      <div style="font-size:18px; line-height:1.45;">ROAS estabilizado em meta. Primeiros reviews de influenciadores. SEO programático começa a colher tráfego orgânico recorrente.</div>
+      <div style="height:1px; background:rgba(255,255,255,0.2); margin:24px 0;"></div>
+      <div style="font-size:14px; line-height:1.6;">
+        <strong>Output:</strong> ROAS &gt; 5× · 60+ páginas SEO · 4 reviews no ar · ciclo recorrente totalmente automatizado.
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Bloco 2 · Operação recorrente</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>14 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 15 — CALENDÁRIO DE ENTREGAS À DIRETORIA                       -->
+<!-- ============================================================ -->
+<section data-screen-label="15 Calendário entregas" style="display:none; padding:64px 100px 70px;"><style>section[data-screen-label="15 Calendário entregas"] table.editorial th, section[data-screen-label="15 Calendário entregas"] table.editorial td { padding: 11px 14px; }</style>
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>Calendário · 15 / 17</span>
+  </div>
+
+  <div class="kicker">O que chega à diretoria — todo mês</div>
+  <h2 class="title" style="margin-bottom:24px; font-size:80px;">Calendário de entregas à diretoria.</h2>
+
+  <p class="lead" style="max-width:1300px; margin-bottom:28px; font-size:24px;">
+    Cadência fixa, sem surpresa. Em todo ciclo mensal, a diretoria recebe seis pontos de contato programados — para acompanhar a operação sem precisar perguntar.
+  </p>
+
+  <table class="editorial" style="font-size:17px;">
+    <thead>
+      <tr>
+        <th style="width:8%;">Dia</th>
+        <th style="width:14%;">Semana</th>
+        <th style="width:24%;">Entrega</th>
+        <th>Conteúdo</th>
+        <th style="width:14%;">Formato</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:19px;">D+1</strong></td>
+        <td><strong>Semana 01</strong></td>
+        <td><strong>Relatório executivo do mês anterior</strong></td>
+        <td>ROAS, CAC, vendas atribuídas, posicionamento orgânico, learnings, plano de ação do mês corrente.</td>
+        <td>PDF · 6 páginas</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:19px;">D+3</strong></td>
+        <td><strong>Semana 01</strong></td>
+        <td><strong>Reunião de leitura</strong></td>
+        <td>Apresentação do relatório à diretoria. Decisões de mídia, pauta e prioridades validadas em conjunto.</td>
+        <td>60 min · presencial</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:19px;">D+10</strong></td>
+        <td><strong>Semana 02</strong></td>
+        <td><strong>Snapshot de meio de mês</strong></td>
+        <td>One-pager com vendas em tempo real, performance de campanhas e SEO. Apenas para leitura.</td>
+        <td>PDF · 1 página</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:19px;">D+17</strong></td>
+        <td><strong>Semana 03</strong></td>
+        <td><strong>Prévia da campanha de impacto</strong></td>
+        <td>Validação rápida do conceito da campanha CRM + vídeo técnico do mês antes de irem ao ar.</td>
+        <td>15 min · presencial</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:19px;">D+25</strong></td>
+        <td><strong>Semana 04</strong></td>
+        <td><strong>Plano do próximo mês</strong></td>
+        <td>Calendário detalhado, mídia planejada, pautas, metas. Para aprovação formal antes da virada.</td>
+        <td>45 min · presencial</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--astra-blue); font-size:19px;">D+30</strong></td>
+        <td><strong>Virada</strong></td>
+        <td><strong>Fechamento &amp; consolidação</strong></td>
+        <td>Documentos arquivados em pasta única; ciclo seguinte inicia com baseline atualizado.</td>
+        <td>Drive · automático</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="foot">
+    <span>Calendário de entregas</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>15 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 16 — PRÓXIMOS PASSOS                                          -->
+<!-- ============================================================ -->
+<section data-screen-label="16 Próximos passos" style="display:none;">
+  <div class="mast">
+    <div class="brand-mark">
+      <svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span>Astra · Planejamento de Marketing</span>
+    </div>
+    <span>16 / 17</span>
+  </div>
+
+  <div class="kicker">Para começar</div>
+  <h2 class="title" style="margin-bottom:48px;">Cinco decisões.<br>Sete dias.</h2>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; flex:1;">
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="deliv">
+        <div class="when">D+1</div>
+        <div>
+          <div class="what">Aprovação executiva</div>
+          <div class="what-sub">Diretoria valida escopo, orçamento e metas trimestrais.</div>
+        </div>
+        <div class="who">Diretoria</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+2</div>
+        <div>
+          <div class="what">Acessos &amp; integrações</div>
+          <div class="what-sub">Google Ads, Meta, Shopify, Search Console, RD Station.</div>
+        </div>
+        <div class="who">TI</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+3</div>
+        <div>
+          <div class="what">Stack contratado</div>
+          <div class="what-sub">Assinaturas operacionais ativadas em conta única.</div>
+        </div>
+        <div class="who">Mkt</div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="deliv">
+        <div class="when">D+5</div>
+        <div>
+          <div class="what">Linha visual aprovada</div>
+          <div class="what-sub">Templates aplicados a partir do manual oficial.</div>
+        </div>
+        <div class="who">Marca</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+7</div>
+        <div>
+          <div class="what">Operação no ar</div>
+          <div class="what-sub">Implantação inicia oficialmente. Primeira visita presencial.</div>
+        </div>
+        <div class="who">Astra</div>
+      </div>
+      <div class="deliv">
+        <div class="when">D+30</div>
+        <div>
+          <div class="what">1ª reunião de leitura</div>
+          <div class="what-sub">Relatório do mês 1 entregue à diretoria.</div>
+        </div>
+        <div class="who">Diretoria</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Próximos passos</span>
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>16 / 17</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 16 — FECHAMENTO                                               -->
+<!-- ============================================================ -->
+<section data-screen-label="17 Fechamento" style="display:none; padding:0; background:var(--paper);">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; z-index:2;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <svg width="42" height="42" viewBox="0 0 272.9 259.3">
+        <path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/>
+      </svg>
+      <span style="font-weight:700; font-size:18px; letter-spacing:0.02em; color:var(--ink);">Astra</span>
+    </div>
+    <span class="label">Fechamento</span>
+  </div>
+
+  <div style="position:absolute; left:100px; right:100px; top:50%; transform:translateY(-50%); z-index:2;">
+    <div class="label-blue" style="margin-bottom:36px;">Em uma frase</div>
+    <div style="font-weight:600; font-size:148px; line-height:0.92; letter-spacing:-0.045em; color:var(--ink); max-width:1700px;">
+      Um mês para<br>
+      <span style="color:var(--astra-blue);">implantar.</span><br>
+      Todo mês para<br>
+      <span style="color:var(--astra-blue); font-weight:400;">crescer.</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:24px; margin-top:64px;">
+      <div style="height:2px; background:var(--ink); width:120px;"></div>
+      <div style="font-weight:400; font-size:30px; color:var(--ink-soft);">Pronto para começar.</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:50px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; z-index:2;">
+    <span>Astra · Planejamento de Marketing · Maio 2026</span>
+    <span>17 / 17</span>
+  </div>
+</section>
+
+</deck-stage>
+
+<script type="application/json" id="speaker-notes">
+[
+  "Capa. Apresentar o documento como um plano de implantacao em 30 dias e operacao recorrente para a area de marketing da Astra.",
+  "Visao geral. Dois blocos: implantacao no primeiro mes e operacao recorrente do mes 2 em diante.",
+  "Os cinco modulos: redes sociais, trafego pago, CRM e funil, SEO e conteudo, marca e 360. Cada um com cadencia e indicador propprios.",
+  "Divisor: implantacao. 30 dias para a operacao estar no ar.",
+  "As quatro fases da implantacao: fundacao tecnica, aquisicao no ar, funil ativo, marca e relatorio.",
+  "Cronograma detalhado da implantacao em formato de gantt. Cada modulo tem seu ritmo de 4 semanas.",
+  "Entregaveis-chave do mes 1, agrupados em tecnicos e de conteudo e gestao.",
+  "O mes 1 e fundacao. As metas de crescimento entram em vigor a partir do mes 2.",
+  "Divisor: operacao recorrente. Quatro semanas, quatro entregas-chave, todo mes.",
+  "O ciclo mensal em uma pagina. Performance, autoridade, vendas, marca.",
+  "Tabela consolidada das entregas semanais com indicadores-chave de cada semana.",
+  "Rituais de gestao com a Astra: duas visitas presenciais por semana, terca e quinta, mais reunioes fixas de leitura.",
+  "Os quatro KPIs reportados todo mes: vendas atribuidas, ROAS, crescimento organico, engajamento de base.",
+  "A trajetoria dos primeiros 90 dias: fundacao, aceleracao, escala.",
+  "Calendario de entregas a diretoria. Seis pontos de contato programados todo mes para a diretoria acompanhar a operacao sem precisar perguntar.",
+  "Cinco decisoes em sete dias para a operacao ir ao ar.",
+  "Fechamento. Um mes para implantar, todo mes para crescer."
+]
+</script>
+
+</body>
+</html>

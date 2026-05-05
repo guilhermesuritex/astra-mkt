@@ -1,0 +1,183 @@
+/* Astra — sistema visual baseado no Kit de Marca oficial */
+
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('brand/InstrumentSans.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('brand/InstrumentSans-Italic.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Brand */
+  --astra-blue: #0C41C6;
+  --astra-blue-deep: #082B85;
+  --astra-blue-soft: #E8EDFB;
+  --astra-blue-tint: #F4F6FD;
+  --ink: #0A0F1F;
+  --ink-soft: #2B3142;
+  --paper: #FAFAF7;
+  --paper-2: #F2F1EA;
+  --line: #D8D6CC;
+  --line-soft: #ECEAE0;
+  --muted: #6B7280;
+  --gold: #C9A55B;        /* accent secundário */
+  --signal: #0C41C6;
+  --black: #0A0F1F;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+deck-stage { background: #0a0f1f; }
+
+section {
+  width: 1920px;
+  height: 1080px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 22px;
+  line-height: 1.45;
+  position: relative;
+  overflow: hidden;
+  padding: 88px 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.italic { font-style: italic; }
+
+/* Type scale — bold, confident, brand-led */
+.display { font-weight: 600; font-size: 168px; line-height: 0.92; letter-spacing: -0.045em; }
+.title   { font-weight: 600; font-size: 96px;  line-height: 0.96; letter-spacing: -0.035em; }
+.subtitle{ font-weight: 500; font-size: 56px;  line-height: 1.02; letter-spacing: -0.025em; }
+.lead    { font-weight: 400; font-size: 30px;  line-height: 1.36; color: var(--ink-soft); }
+.body    { font-weight: 400; font-size: 22px;  line-height: 1.5;  color: var(--ink-soft); }
+.small   { font-weight: 400; font-size: 16px;  color: var(--muted); }
+.label   { font-weight: 600; font-size: 12px;  letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.label-blue { font-weight: 600; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--astra-blue); }
+
+/* Chrome */
+.mast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 56px;
+}
+.mast .brand-mark {
+  display: flex; align-items: center; gap: 12px; color: var(--ink);
+}
+.mast .brand-mark svg { display: block; }
+
+.foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 32px;
+  position: relative;
+}
+.card-blue {
+  background: var(--astra-blue);
+  color: #fff;
+  padding: 32px;
+}
+.card-ink {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 32px;
+}
+.card-tint {
+  background: var(--astra-blue-tint);
+  border: 1px solid var(--astra-blue-soft);
+  padding: 32px;
+}
+
+/* Numbers */
+.num { font-feature-settings: "lnum"; letter-spacing: -0.03em; font-weight: 600; }
+
+/* Buttons */
+.pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 18px; border-radius: 999px;
+  font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 600;
+}
+.pill-outline { border: 1px solid var(--ink); color: var(--ink); background: transparent; }
+.pill-blue { background: var(--astra-blue); color: #fff; }
+.pill-ink { background: var(--ink); color: var(--paper); }
+
+/* Tables */
+table.editorial {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 19px;
+}
+table.editorial th, table.editorial td {
+  text-align: left;
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+table.editorial th {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 14px;
+}
+
+/* Brand icon styles for inline SVGs */
+.icon-stroke .st0,
+.icon-stroke .st1 {
+  fill: none;
+  stroke: var(--astra-blue);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-stroke.on-blue .st0,
+.icon-stroke.on-blue .st1 {
+  stroke: #fff;
+}
+.icon-stroke.on-ink .st0,
+.icon-stroke.on-ink .st1 {
+  stroke: #fff;
+}
+
+/* Decorative rules */
+.rule { height: 1px; background: var(--line); width: 100%; }
+.rule-thick { height: 3px; background: var(--ink); width: 80px; }
+.rule-blue { height: 3px; background: var(--astra-blue); width: 80px; }
+
+/* Spark icon (A com estrela do logo) */
+.spark { display:inline-block; width: 12px; height: 12px; background: var(--astra-blue); clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%); }
