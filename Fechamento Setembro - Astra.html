@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Astra · Fechamento de Setembro · 2026</title>
+<link rel="stylesheet" href="brand.css">
+<script src="deck-stage.js"></script>
+<style>
+:root {
+  --laranja: #FC7225;
+  --azul-estrelar: #78D2FF;
+  --azul-naval: #0A0D51;
+  --shopify: #4F8A2E;
+  --shopify-bg: #EEF6E5;
+  --shopify-line: #CFE3B6;
+  --ml-amber: #B57E00;
+  --ml-bg: #FFF7D6;
+  --ml-line: #EFD98C;
+  --alerta: #B3261E;
+}
+.kicker { font-weight:600; font-size:12px; letter-spacing:0.20em; text-transform:uppercase; color:var(--astra-blue); margin-bottom:24px; }
+
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.kpi { background:#fff; border:1px solid var(--line); padding:30px 28px; display:flex; flex-direction:column; gap:6px; }
+.kpi .k-label { font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+.kpi .k-num { font-size:62px; font-weight:600; letter-spacing:-0.04em; line-height:1; color:var(--ink); font-feature-settings:"lnum"; }
+.kpi .k-sub { font-size:17px; color:var(--muted); line-height:1.35; }
+.k-up { color:var(--astra-blue); font-weight:600; }
+.k-dn { color:var(--alerta); font-weight:600; }
+
+.bars { display:grid; grid-template-columns:repeat(9,1fr); gap:14px; align-items:end; height:360px; }
+.bar-col { display:flex; flex-direction:column; justify-content:flex-end; height:100%; gap:10px; }
+.bar { background:var(--astra-blue-soft); }
+.bar.on { background:var(--astra-blue); }
+.bar-val { font-size:15px; font-weight:600; color:var(--ink); text-align:center; font-feature-settings:"lnum"; }
+.bar-lab { font-size:14px; color:var(--muted); text-align:center; letter-spacing:0.06em; text-transform:uppercase; font-weight:600; }
+
+.ba { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); background:#fff; }
+.ba > div { padding:34px 40px; }
+.ba > div:first-child { border-right:1px solid var(--line); background:var(--paper-2); }
+.ba-tag { font-size:12px; letter-spacing:0.18em; text-transform:uppercase; font-weight:700; margin-bottom:22px; }
+.ba-row { display:flex; justify-content:space-between; align-items:baseline; padding:13px 0; border-bottom:1px solid var(--line-soft); }
+.ba-row:last-child { border-bottom:none; }
+.ba-row .r-lab { font-size:18px; color:var(--ink-soft); }
+.ba-row .r-val { font-size:30px; font-weight:600; letter-spacing:-0.02em; font-feature-settings:"lnum"; }
+</style>
+</head>
+<body>
+
+<deck-stage>
+
+<!-- 01 CAPA -->
+<section data-screen-label="01 Capa" style="padding:0; background:var(--paper);">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; z-index:2;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <svg width="42" height="42" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg>
+      <span style="font-weight:700; font-size:18px; letter-spacing:0.02em; color:var(--ink);">Astra</span>
+    </div>
+    <span class="label">Fechamento de Marketing · Setembro 2026</span>
+  </div>
+  <svg viewBox="900 0 403 1080" style="position:absolute; right:0; top:50%; height:72%; transform:translateY(-50%) scaleX(-1); z-index:1;"><path fill="var(--azul-estrelar)" d="M1303,493.7c-253.6,0-459.2-205.6-459.2-459.2h-.3V0H0v1080h843.6v-53h.3c0-253.6,205.6-459.2,459.2-459.2h0v-74.1h0Z"/></svg>
+  <div style="position:absolute; left:100px; right:100px; top:46%; transform:translateY(-50%); z-index:2;">
+    <div class="label-blue" style="margin-bottom:32px; display:flex; align-items:center; gap:12px;"><svg width="18" height="18" viewBox="620 200 680 680" style="flex-shrink:0;"><path fill="var(--laranja)" d="M985.3,200.7h-52.1c0,172.6-139.9,312.6-312.6,312.6v52.1c173.4,0,314,140.6,314,314h50.7c0-173.4,140.6-314,314-314h0v-50.7h0c-173.4,0-314-140.6-314-314Z"/></svg><span>Fechamento de Marketing · Astra · Setembro 2026</span></div>
+    <div style="font-weight:600; font-size:148px; line-height:0.92; letter-spacing:-0.045em; color:var(--ink);">
+      Fechamento<br>
+      <span style="color:var(--astra-blue); font-weight:400; font-style:italic;">de setembro</span><br>
+      &amp; plano de outubro.
+    </div>
+  </div>
+  <div style="position:absolute; left:100px; right:100px; bottom:80px; display:grid; grid-template-columns:repeat(3, 1fr); gap:32px; z-index:2; color:var(--ink);">
+    <div><div class="label" style="margin-bottom:10px;">Para</div><div style="font-size:24px; font-weight:600;">Astra Bancos</div><div class="small">Diretoria</div></div>
+    <div><div class="label" style="margin-bottom:10px;">Fechamento</div><div style="font-size:24px; font-weight:600;">Setembro 2026</div><div class="small">Melhor mês do ano</div></div>
+    <div><div class="label" style="margin-bottom:10px;">Planejamento</div><div style="font-size:24px; font-weight:600;">Outubro 2026</div><div class="small">Próximo ciclo</div></div>
+  </div>
+  <div style="position:absolute; bottom:36px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); font-weight:700; z-index:2;">
+    <span>01 / 16</span><span>Outubro · 2026</span>
+  </div>
+</section>
+
+<!-- 02 O MÊS EM NÚMEROS -->
+<section data-screen-label="02 O mês em números">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">O mês em números</div>
+  <div class="title" style="margin-bottom:12px;">Setembro foi o melhor mês<br>do ano, com folga.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:46px;">O faturamento de e-commerce mais que dobrou em relação a agosto, puxado pelos dois canais ao mesmo tempo. Não foi pico de um produto só.</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="k-label">E-commerce</div><div class="k-num">80,2<span style="font-size:30px; font-weight:500;"> mil</span></div><div class="k-sub">Loja própria + Mercado Livre<br><span class="k-up">+156% vs agosto</span></div></div>
+    <div class="kpi"><div class="k-label">Mercado Livre</div><div class="k-num">51,2<span style="font-size:30px; font-weight:500;"> mil</span></div><div class="k-sub">67 vendas · 112 unidades<br><span class="k-up">+146% vs agosto</span></div></div>
+    <div class="kpi"><div class="k-label">Loja própria</div><div class="k-num">29,0<span style="font-size:30px; font-weight:500;"> mil</span></div><div class="k-sub">11 pedidos · ticket R$ 2.637<br><span class="k-up">+176% vs agosto</span></div></div>
+    <div class="kpi"><div class="k-label">Vendas do CRM</div><div class="k-num">36,6<span style="font-size:30px; font-weight:500;"> mil</span></div><div class="k-sub">7 negociações ganhas<br><span class="k-up">+80% vs agosto</span></div></div>
+  </div>
+  <div style="margin-top:34px; background:var(--astra-blue); color:#fff; padding:34px 40px; display:flex; align-items:center; justify-content:space-between;">
+    <div><div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.78; font-weight:700; margin-bottom:8px;">Total do mês</div><div style="font-size:24px; opacity:0.9;">E-commerce somado às vendas originadas pelo marketing no CRM</div></div>
+    <div style="font-size:72px; font-weight:600; letter-spacing:-0.04em; font-feature-settings:'lnum';">R$ 116.849,56</div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>02 / 16</span></div>
+</section>
+
+<!-- 03 EVOLUÇÃO -->
+<section data-screen-label="03 Evolução do e-commerce">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">Evolução</div>
+  <div class="title" style="margin-bottom:12px;">Faturamento de e-commerce,<br>mês a mês.</div>
+  <div class="lead" style="max-width:1100px; margin-bottom:38px;">Loja própria e Mercado Livre somados, de janeiro a setembro de 2026.</div>
+  <div class="bars">
+    <div class="bar-col"><div class="bar-val">6,6 mil</div><div class="bar" style="height:8%;"></div><div class="bar-lab">Jan</div></div>
+    <div class="bar-col"><div class="bar-val">10,0 mil</div><div class="bar" style="height:12%;"></div><div class="bar-lab">Fev</div></div>
+    <div class="bar-col"><div class="bar-val">12,3 mil</div><div class="bar" style="height:15%;"></div><div class="bar-lab">Mar</div></div>
+    <div class="bar-col"><div class="bar-val">3,9 mil</div><div class="bar" style="height:5%;"></div><div class="bar-lab">Abr</div></div>
+    <div class="bar-col"><div class="bar-val">25,7 mil</div><div class="bar" style="height:32%;"></div><div class="bar-lab">Mai</div></div>
+    <div class="bar-col"><div class="bar-val">19,4 mil</div><div class="bar" style="height:24%;"></div><div class="bar-lab">Jun</div></div>
+    <div class="bar-col"><div class="bar-val">46,0 mil</div><div class="bar" style="height:57%;"></div><div class="bar-lab">Jul</div></div>
+    <div class="bar-col"><div class="bar-val">31,3 mil</div><div class="bar" style="height:39%;"></div><div class="bar-lab">Ago</div></div>
+    <div class="bar-col"><div class="bar-val" style="color:var(--astra-blue);">80,2 mil</div><div class="bar on" style="height:100%;"></div><div class="bar-lab" style="color:var(--astra-blue);">Set</div></div>
+  </div>
+  <div style="margin-top:42px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Recorde</div><div class="body">Setembro superou julho, que era o melhor mês do ano, em 74%.</div></div>
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Os dois canais subiram</div><div class="body">Não foi concentração: loja própria e Mercado Livre cresceram juntos.</div></div>
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Acumulado do ano</div><div class="body">R$ 225,2 mil de e-commerce de janeiro a setembro.</div></div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>03 / 16</span></div>
+</section>
+
+<!-- 04 DIVISOR FRETE -->
+<section data-screen-label="04 Divisor Frete grátis" style="padding:0; background:var(--astra-blue); color:#fff; overflow:hidden;">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:600;"><span>Astra · Fechamento de Marketing</span><span>Análise do mês</span></div>
+  <svg viewBox="900 0 403 1080" style="position:absolute; right:0; top:50%; height:72%; transform:translateY(-50%) scaleX(-1); z-index:1;"><path fill="var(--azul-estrelar)" d="M1303,493.7c-253.6,0-459.2-205.6-459.2-459.2h-.3V0H0v1080h843.6v-53h.3c0-253.6,205.6-459.2,459.2-459.2h0v-74.1h0Z"/></svg>
+  <div style="position:absolute; left:100px; right:100px; top:50%; transform:translateY(-50%); z-index:2;">
+    <div class="label" style="color:rgba(255,255,255,0.85); margin-bottom:36px;">Análise · Setembro 2026</div>
+    <div style="font-weight:600; font-size:168px; line-height:0.9; letter-spacing:-0.045em;">Frete grátis</div>
+    <div style="font-weight:400; color:var(--laranja); font-size:56px; letter-spacing:-0.01em; line-height:1.15; margin-top:24px;">Colocamos acima de R$ 1.000 em setembro.<br>Funcionou? E quanto custou?</div>
+  </div>
+</section>
+
+<!-- 05 FRETE RESULTADO -->
+<section data-screen-label="05 Frete grátis resultado">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">Frete grátis acima de R$ 1.000</div>
+  <div class="title" style="margin-bottom:12px;">O cliente passou a<br>completar o carrinho.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:38px;">Comparação dos 11 meses anteriores ao benefício contra os 2 meses com ele. Pedidos da loja própria, sem cancelados.</div>
+  <div class="ba">
+    <div>
+      <div class="ba-tag" style="color:var(--muted);">Antes · out/25 a ago/26 · 11 meses</div>
+      <div class="ba-row"><span class="r-lab">Pedidos por mês</span><span class="r-val">5,5</span></div>
+      <div class="ba-row"><span class="r-lab">Faturamento por mês</span><span class="r-val">R$ 5.707</span></div>
+      <div class="ba-row"><span class="r-lab">Ticket médio</span><span class="r-val">R$ 1.029</span></div>
+      <div class="ba-row"><span class="r-lab">Pedidos acima de R$ 1.000</span><span class="r-val">18%</span></div>
+    </div>
+    <div>
+      <div class="ba-tag" style="color:var(--astra-blue);">Depois · set/26 em diante · 2 meses</div>
+      <div class="ba-row"><span class="r-lab">Pedidos por mês</span><span class="r-val" style="color:var(--astra-blue);">7,5</span></div>
+      <div class="ba-row"><span class="r-lab">Faturamento por mês</span><span class="r-val" style="color:var(--astra-blue);">R$ 15.377</span></div>
+      <div class="ba-row"><span class="r-lab">Ticket médio</span><span class="r-val" style="color:var(--astra-blue);">R$ 2.050</span></div>
+      <div class="ba-row"><span class="r-lab">Pedidos acima de R$ 1.000</span><span class="r-val" style="color:var(--astra-blue);">53%</span></div>
+    </div>
+  </div>
+  <div style="margin-top:34px; display:grid; grid-template-columns:2fr 1fr; gap:24px;">
+    <div class="card-blue"><div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.78; font-weight:700; margin-bottom:12px;">O número que importa</div><div style="font-size:29px; line-height:1.3;">A fatia de pedidos acima de R$ 1.000 <strong>triplicou</strong>. É o comportamento que um piso de frete grátis provoca: o cliente completa o carrinho para alcançar o benefício. O ticket médio dobrou junto.</div></div>
+    <div class="card"><div class="label" style="margin-bottom:12px; color:var(--alerta);">Ressalva</div><div class="body">São 2 meses e 15 pedidos. Sinal forte, não prova. Com outubro fechado dá para cravar.</div></div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>05 / 16</span></div>
+</section>
+
+<!-- 06 FRETE CUSTO -->
+<section data-screen-label="06 O pedido do Acre">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">O outro lado</div>
+  <div class="title" style="margin-bottom:12px;">O pedido do Acre.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:38px;">Um pedido mostrou o limite do benefício: quando a distância é grande, o frete absorvido come a margem.</div>
+  <div style="display:grid; grid-template-columns:1.05fr 1fr; gap:28px;">
+    <div class="card" style="padding:38px;">
+      <div class="label" style="margin-bottom:20px;">Pedido #1091 · 18 de setembro</div>
+      <div style="display:flex; align-items:baseline; gap:18px; margin-bottom:26px;"><span style="font-size:72px; font-weight:600; letter-spacing:-0.04em; font-feature-settings:'lnum';">R$ 4.842</span><span style="font-size:23px; color:var(--muted);">Acre · Rodonaves</span></div>
+      <div class="body" style="margin-bottom:22px;">O cliente levou o frete grátis. O custo real do envio não aparece na loja: quando o frete é zerado, o sistema grava R$ 0,00 e o valor verdadeiro fica só na fatura da transportadora.</div>
+      <div style="background:var(--paper-2); padding:22px; border-left:3px solid var(--laranja);"><div class="body" style="color:var(--ink);">Pelos fretes cobrados em destinos parecidos, a estimativa fica entre <strong>R$ 500 e R$ 700</strong>, cerca de <strong>10% do pedido</strong>. Numa margem de 30%, consome um terço do lucro.</div></div>
+    </div>
+    <div class="card" style="padding:38px;">
+      <div class="label" style="margin-bottom:18px;">Quanto custa chegar em cada destino</div>
+      <table class="editorial">
+        <tr><th>Destino</th><th style="text-align:right;">Frete médio</th><th style="text-align:right;">Pedidos</th></tr>
+        <tr><td>Ceará</td><td style="text-align:right; font-weight:600;">R$ 660,39</td><td style="text-align:right;">1</td></tr>
+        <tr><td>Mato Grosso</td><td style="text-align:right; font-weight:600;">R$ 307,52</td><td style="text-align:right;">2</td></tr>
+        <tr><td>Mato Grosso do Sul</td><td style="text-align:right; font-weight:600;">R$ 180,03</td><td style="text-align:right;">4</td></tr>
+        <tr><td>Goiás</td><td style="text-align:right; font-weight:600;">R$ 109,96</td><td style="text-align:right;">4</td></tr>
+        <tr><td>São Paulo</td><td style="text-align:right; font-weight:600;">R$ 37,26</td><td style="text-align:right;">19</td></tr>
+      </table>
+      <div class="small" style="margin-top:18px;">Base: pedidos dos últimos 12 meses que pagaram frete.</div>
+    </div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>06 / 16</span></div>
+</section>
+
+<!-- 07 FRETE REGIÃO -->
+<section data-screen-label="07 Limitar por região?">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">A decisão</div>
+  <div class="title" style="margin-bottom:12px;">Limitar o frete grátis<br>ao Sul e Sudeste?</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:36px;">A pergunta é legítima, mas os números mostram que cortar o resto do país custaria faturamento real.</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:32px;">
+    <div class="card" style="padding:34px;"><div class="label-blue" style="margin-bottom:14px;">Sul e Sudeste</div><div style="font-size:58px; font-weight:600; letter-spacing:-0.04em; font-feature-settings:'lnum'; margin-bottom:6px;">R$ 15.056,80</div><div class="lead">3 pedidos com frete grátis</div></div>
+    <div class="card" style="padding:34px; border-color:var(--laranja);"><div class="label" style="margin-bottom:14px; color:var(--laranja);">Resto do país</div><div style="font-size:58px; font-weight:600; letter-spacing:-0.04em; font-feature-settings:'lnum'; margin-bottom:6px;">R$ 12.866,61</div><div class="lead">4 pedidos com frete grátis</div></div>
+  </div>
+  <div class="card-ink" style="padding:38px;">
+    <div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.7; font-weight:700; margin-bottom:14px;">Proposta</div>
+    <div style="font-size:33px; line-height:1.3; margin-bottom:22px;">Em vez de cortar região, <strong>subir o piso onde o frete é caro</strong>.</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; font-size:23px; line-height:1.4; opacity:0.92;">
+      <div><strong style="color:var(--azul-estrelar);">Sul e Sudeste</strong><br>Frete grátis a partir de R$ 1.000, como está hoje.</div>
+      <div><strong style="color:var(--laranja);">Demais estados</strong><br>Frete grátis a partir de R$ 2.500 ou R$ 3.000.</div>
+    </div>
+    <div style="margin-top:24px; font-size:20px; opacity:0.75;">Mantém o benefício como alavanca de ticket no país inteiro, sem absorver R$ 500 de frete num pedido de R$ 1.100. O resto do país é 57% dos pedidos com frete grátis e 46% do faturamento deles.</div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>07 / 16</span></div>
+</section>
+
+<!-- 08 DIVISOR MERCADO LIVRE -->
+<section data-screen-label="08 Divisor Mercado Livre" style="padding:0; background:var(--ml-bg); overflow:hidden;">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ml-amber); font-weight:600;"><span>Astra · Fechamento de Marketing</span><span>Mercado Livre</span></div>
+  <svg viewBox="900 0 403 1080" style="position:absolute; right:0; top:50%; height:72%; transform:translateY(-50%) scaleX(-1); z-index:1;"><path fill="#EFD98C" d="M1303,493.7c-253.6,0-459.2-205.6-459.2-459.2h-.3V0H0v1080h843.6v-53h.3c0-253.6,205.6-459.2,459.2-459.2h0v-74.1h0Z"/></svg>
+  <div style="position:absolute; left:100px; right:100px; top:50%; transform:translateY(-50%); z-index:2;">
+    <div class="label" style="color:var(--ml-amber); margin-bottom:36px;">Fechamento · Setembro 2026</div>
+    <div style="font-weight:600; font-size:168px; line-height:0.9; letter-spacing:-0.045em; color:var(--ink);">Mercado Livre</div>
+    <div style="font-weight:400; color:var(--ml-amber); font-size:56px; letter-spacing:-0.01em; line-height:1.15; margin-top:24px;">O canal dobrou de tamanho<br>e a loja oficial voltou ao ar.</div>
+  </div>
+</section>
+
+<!-- 09 ML RESULTADOS -->
+<section data-screen-label="09 Resultados Mercado Livre">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">Mercado Livre</div>
+  <div class="title" style="margin-bottom:12px;">Menos visitas,<br>mais que o dobro de vendas.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:42px;">O canal recebeu 11% menos visitas que em agosto e mesmo assim dobrou o faturamento. O que mudou foi a taxa de conversão.</div>
+  <table class="editorial" style="font-size:21px;">
+    <tr><th>Indicador</th><th style="text-align:right;">Julho</th><th style="text-align:right;">Agosto</th><th style="text-align:right; color:var(--astra-blue);">Setembro</th><th style="text-align:right;">Set vs Ago</th></tr>
+    <tr><td>Faturamento</td><td style="text-align:right;">R$ 43.992</td><td style="text-align:right;">R$ 20.823</td><td style="text-align:right; font-weight:600; color:var(--astra-blue);">R$ 51.219</td><td style="text-align:right; color:var(--astra-blue); font-weight:600;">+146%</td></tr>
+    <tr><td>Vendas</td><td style="text-align:right;">26</td><td style="text-align:right;">30</td><td style="text-align:right; font-weight:600; color:var(--astra-blue);">67</td><td style="text-align:right; color:var(--astra-blue); font-weight:600;">+123%</td></tr>
+    <tr><td>Unidades</td><td style="text-align:right;">32</td><td style="text-align:right;">39</td><td style="text-align:right; font-weight:600; color:var(--astra-blue);">112</td><td style="text-align:right; color:var(--astra-blue); font-weight:600;">+187%</td></tr>
+    <tr><td>Visitas aos anúncios</td><td style="text-align:right;">9.878</td><td style="text-align:right;">8.900</td><td style="text-align:right; font-weight:600;">7.958</td><td style="text-align:right; color:var(--muted);">−11%</td></tr>
+    <tr><td>Conversão (vendas / visitas)</td><td style="text-align:right;">0,26%</td><td style="text-align:right;">0,34%</td><td style="text-align:right; font-weight:600; color:var(--astra-blue);">0,84%</td><td style="text-align:right; color:var(--astra-blue); font-weight:600;">+147%</td></tr>
+  </table>
+  <div style="margin-top:38px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Mais itens por venda</div><div class="body">1,67 unidade por venda, contra 1,30 em agosto. A campanha de segunda unidade e os kits aparecem aqui.</div></div>
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Fichas e fotos</div><div class="body">Anúncios reformados ao longo do mês: linha de empilhadeira, válvula paralela e saldão.</div></div>
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Catálogo ativo</div><div class="body">4.528 anúncios no ar, 100% com estoque e vinculados à loja oficial.</div></div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>09 / 16</span></div>
+</section>
+
+<!-- 10 LOJA OFICIAL -->
+<section data-screen-label="10 Loja oficial reativada">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">Loja oficial</div>
+  <div class="title" style="margin-bottom:12px;">A página da loja estava<br>suspensa. Voltou ao ar.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:42px;">A loja oficial tem mais de 1.300 seguidores e levava o comprador a uma tela de suspensão. O diagnóstico veio de uma varredura nos 4.557 anúncios da conta.</div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:34px;">
+    <div class="card" style="padding:34px;"><div class="label" style="margin-bottom:14px;">A causa</div><div style="font-size:52px; font-weight:600; letter-spacing:-0.04em; margin-bottom:10px; font-feature-settings:'lnum';">187</div><div class="body">anúncios ativos estavam marcados como "anunciar fora de uma loja oficial", quase todos da leva de bancos por modelo de caminhão.</div></div>
+    <div class="card" style="padding:34px;"><div class="label" style="margin-bottom:14px;">A correção</div><div style="font-size:52px; font-weight:600; letter-spacing:-0.04em; margin-bottom:10px; font-feature-settings:'lnum'; color:var(--astra-blue);">195</div><div class="body">anúncios religados à loja oficial via API, incluindo 8 que estavam em análise.</div></div>
+    <div class="card" style="padding:34px;"><div class="label" style="margin-bottom:14px;">O resultado</div><div style="font-size:52px; font-weight:600; letter-spacing:-0.04em; margin-bottom:10px; font-feature-settings:'lnum'; color:var(--astra-blue);">100%</div><div class="body">dos anúncios ativos na loja oficial e com estoque, as duas condições que o Mercado Livre exige.</div></div>
+  </div>
+  <div class="card-blue" style="padding:36px;">
+    <div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.78; font-weight:700; margin-bottom:14px;">E a vitrine foi remontada</div>
+    <div style="font-size:27px; line-height:1.35;">Categorias por faixa de preço separando bancos de peças, e dois banners novos lidos em sequência, um de bancos e um de peças. O selo de loja oficial dá mais destaque na busca e mais confiança na hora da compra.</div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>10 / 16</span></div>
+</section>
+
+<!-- 11 DIVISOR TRÁFEGO -->
+<section data-screen-label="11 Divisor Tráfego e canais" style="padding:0; background:var(--astra-blue); color:#fff; overflow:hidden;">
+  <div style="position:absolute; top:60px; left:100px; right:100px; display:flex; justify-content:space-between; align-items:center; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:600;"><span>Astra · Fechamento de Marketing</span><span>Tráfego</span></div>
+  <svg viewBox="900 0 403 1080" style="position:absolute; right:0; top:50%; height:72%; transform:translateY(-50%) scaleX(-1); z-index:1;"><path fill="var(--azul-estrelar)" d="M1303,493.7c-253.6,0-459.2-205.6-459.2-459.2h-.3V0H0v1080h843.6v-53h.3c0-253.6,205.6-459.2,459.2-459.2h0v-74.1h0Z"/></svg>
+  <div style="position:absolute; left:100px; right:100px; top:50%; transform:translateY(-50%); z-index:2;">
+    <div class="label" style="color:rgba(255,255,255,0.85); margin-bottom:36px;">Fechamento · Setembro 2026</div>
+    <div style="font-weight:600; font-size:168px; line-height:0.9; letter-spacing:-0.045em;">Tráfego</div>
+    <div style="font-weight:400; color:var(--laranja); font-size:56px; letter-spacing:-0.01em; line-height:1.15; margin-top:24px;">Mídia paga, busca orgânica e leads.</div>
+  </div>
+</section>
+
+<!-- 12 TRÁFEGO PAGO -->
+<section data-screen-label="12 Tráfego pago">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">Mídia paga · últimos 30 dias</div>
+  <div class="title" style="margin-bottom:12px;">Onde o investimento<br>virou venda.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:38px;">Três plataformas rodando. O Mercado Livre Ads é o que entrega venda com consistência; o Google Shopping entrega poucas conversões, mas de ticket alto.</div>
+  <table class="editorial" style="font-size:21px;">
+    <tr><th>Plataforma</th><th style="text-align:right;">Investimento</th><th style="text-align:right;">Cliques</th><th style="text-align:right;">Vendas</th><th style="text-align:right;">Receita</th><th style="text-align:right;">Retorno</th></tr>
+    <tr><td><strong>Mercado Livre Ads</strong><br><span class="small">Catálogo inteiro</span></td><td style="text-align:right;">R$ 851,26</td><td style="text-align:right;">1.037</td><td style="text-align:right; font-weight:600;">24 un.</td><td style="text-align:right; font-weight:600;">R$ 2.448,42</td><td style="text-align:right; font-weight:600; color:var(--astra-blue);">2,9x</td></tr>
+    <tr><td><strong>Google Shopping</strong><br><span class="small">Bancos Principais + Peças Curva A</span></td><td style="text-align:right;">R$ 376,32</td><td style="text-align:right;">301</td><td style="text-align:right; font-weight:600;">1</td><td style="text-align:right; font-weight:600;">R$ 5.380,00</td><td style="text-align:right; font-weight:600; color:var(--astra-blue);">14,3x</td></tr>
+    <tr><td><strong>Meta</strong><br><span class="small">3 campanhas de compra</span></td><td style="text-align:right;">R$ 516,34</td><td style="text-align:right;">903</td><td style="text-align:right;">0</td><td style="text-align:right;">—</td><td style="text-align:right; color:var(--muted);">—</td></tr>
+    <tr style="border-top:2px solid var(--ink);"><td style="font-weight:700;">Total</td><td style="text-align:right; font-weight:700;">R$ 1.743,92</td><td style="text-align:right; font-weight:700;">2.241</td><td style="text-align:right; font-weight:700;">25</td><td style="text-align:right; font-weight:700;">R$ 7.828,42</td><td style="text-align:right; font-weight:700; color:var(--astra-blue);">4,5x</td></tr>
+  </table>
+  <div style="margin-top:34px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">O que vende no Google</div><div class="body">Bancos 7800 e 9515 concentram o investimento. Nas peças, o botão da válvula (G41920-I) e o botão de vidro Axor (W1003).</div></div>
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Meta não converteu</div><div class="body">903 cliques, 506 visitas de página e 5 carrinhos, mas zero compra. O gargalo está na página de destino, não no anúncio.</div></div>
+    <div class="card"><div class="label" style="margin-bottom:10px; color:var(--alerta);">Ponto de atenção</div><div class="body">Uma conversão só no Google é amostra pequena para cravar o retorno de 14x. Precisa de mais mês.</div></div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>12 / 16</span></div>
+</section>
+
+<!-- 13 SEO -->
+<section data-screen-label="13 Busca orgânica">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">Busca orgânica</div>
+  <div class="title" style="margin-bottom:12px;">A melhor posição média<br>do ano.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:44px;">O site subiu para a posição 6,4 no Google, melhor marca de 2026. O trabalho de ficha, descrição e coleção por segmento aparece aqui com atraso, como é normal em busca orgânica.</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="k-label">Posição média</div><div class="k-num">6,4</div><div class="k-sub">Era 7,1 em agosto<br><span class="k-up">melhor do ano</span></div></div>
+    <div class="kpi"><div class="k-label">Cliques</div><div class="k-num">864</div><div class="k-sub">929 em agosto<br><span class="k-sub">estável</span></div></div>
+    <div class="kpi"><div class="k-label">Impressões</div><div class="k-num">33,1<span style="font-size:30px; font-weight:500;"> mil</span></div><div class="k-sub">34,1 mil em agosto<br><span class="k-sub">estável</span></div></div>
+    <div class="kpi"><div class="k-label">Leads do site</div><div class="k-num">11</div><div class="k-sub">1 em agosto<br><span class="k-up">+1.000%</span></div></div>
+  </div>
+  <div style="margin-top:38px; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">O que foi feito no mês</div><div class="body">Artigo sobre suspensão a ar ou hidráulica, página de peças Scania reescrita, 3 coleções automáticas de peças por banco e alt text em 23 imagens de bancos de caminhão.</div></div>
+    <div class="card"><div class="label" style="margin-bottom:10px;">Audiência do site</div><div class="body">2.688 sessões e 2.122 usuários em setembro, com 85% de engajamento e 3 minutos de permanência média. A qualidade da visita se manteve.</div></div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>13 / 16</span></div>
+</section>
+
+<!-- 14 CRM -->
+<section data-screen-label="14 Leads e CRM">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">Funil de marketing</div>
+  <div class="title" style="margin-bottom:12px;">Sete vendas vindas<br>do funil de marketing.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:40px;">Só negociações originadas em canais de marketing. Prospecção ativa, feiras e eventos e inteligência comercial ficam de fora, porque são originação do time comercial, não do marketing.</div>
+  <table class="editorial" style="font-size:21px;">
+    <tr><th>Mês</th><th style="text-align:right;">Negociações criadas</th><th style="text-align:right;">Ganhas</th><th style="text-align:right;">Faturamento</th><th style="text-align:right;">Perdidas</th></tr>
+    <tr><td>Junho</td><td style="text-align:right;">87</td><td style="text-align:right;">5</td><td style="text-align:right;">R$ 24.141,25</td><td style="text-align:right;">18</td></tr>
+    <tr><td>Julho</td><td style="text-align:right;">114</td><td style="text-align:right;">7</td><td style="text-align:right;">R$ 31.048,56</td><td style="text-align:right;">16</td></tr>
+    <tr><td>Agosto</td><td style="text-align:right;">124</td><td style="text-align:right;">6</td><td style="text-align:right;">R$ 20.303,36</td><td style="text-align:right;">7</td></tr>
+    <tr style="background:var(--astra-blue-tint);"><td style="font-weight:700; color:var(--astra-blue);">Setembro</td><td style="text-align:right; font-weight:600;">100</td><td style="text-align:right; font-weight:700; color:var(--astra-blue);">7</td><td style="text-align:right; font-weight:700; color:var(--astra-blue);">R$ 36.626,18</td><td style="text-align:right;">12</td></tr>
+  </table>
+  <div style="margin-top:38px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Ticket por venda</div><div class="body">R$ 5.232 por negociação ganha, o maior desde junho.</div></div>
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Tempo até fechar</div><div class="body">31,8 dias em média entre a entrada do lead e a venda.</div></div>
+    <div class="card"><div class="label" style="margin-bottom:10px;">Correção aplicada</div><div class="body">O painel passou a excluir feiras e eventos e inteligência comercial do funil de marketing. Os números históricos foram recalculados.</div></div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>14 / 16</span></div>
+</section>
+
+<!-- 15 ENTREGAS -->
+<section data-screen-label="15 Entregas de setembro">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
+  <div class="kicker">Entregas</div>
+  <div class="title" style="margin-bottom:12px;">Vinte e sete entregas<br>no mês.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:40px;">Agrupadas por frente. Cada uma está registrada no painel com detalhe e imagem.</div>
+  <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px;">
+    <div class="card" style="padding:34px;">
+      <div class="label-blue" style="margin-bottom:16px;">Catálogo e e-commerce · 9 entregas</div>
+      <div class="body" style="line-height:1.7;">Linha de reposição dos bancos 7801, 7802 e 6801 no ar, com 107 peças cadastradas · 3 bancos de caminhão novos criados · ecossistema de peças por banco com metafield em 119 peças e 3 coleções automáticas · catálogo publicado no SAP Ariba (259 produtos) e no Mercado Eletrônico (100) · catálogo da loja conectado ao Meta com app próprio.</div>
+    </div>
+    <div class="card" style="padding:34px;">
+      <div class="label-blue" style="margin-bottom:16px;">Super Saldão · 3 entregas</div>
+      <div class="body" style="line-height:1.7;">10 bancos parados na fábrica viraram campanha completa: produtos criados nos dois canais com ficha, foto e frete · coleção própria no site · banner desktop e mobile · 9 artes de produto · newsletter para a base · arte de WhatsApp para os vendedores. Quatro bancos já vendidos.</div>
+    </div>
+    <div class="card" style="padding:34px;">
+      <div class="label-blue" style="margin-bottom:16px;">Mercado Livre · 2 entregas</div>
+      <div class="body" style="line-height:1.7;">Linha de empilhadeira reestruturada: preços, fotos e campanha de segunda unidade · anúncio da válvula paralela reformado, de 1 foto e 7 visitas por mês para nota 77 de qualidade.</div>
+    </div>
+    <div class="card" style="padding:34px;">
+      <div class="label-blue" style="margin-bottom:16px;">Conteúdo e marca · 8 entregas</div>
+      <div class="body" style="line-height:1.7;">Artigo sobre suspensão a ar ou hidráulica · carrosséis do 7800 e dos bancos Scania · post de visita técnica com calendário aberto · institucional de distribuidora ISRINGHAUSEN desde 1996 · campanha do Dia do Cliente · vídeo do banco 9515 · arte de envelopamento do carro.</div>
+    </div>
+  </div>
+  <div style="margin-top:28px; display:grid; grid-template-columns:repeat(2,1fr); gap:24px;">
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">SEO · 3 entregas</div><div class="body">Página de peças Scania reescrita · alt text em 23 imagens · typos corrigidos nos títulos G6502 e G6503.</div></div>
+    <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Portais B2B · 2 entregas</div><div class="body">Perfil no SAP Ariba auditado com palavras-chave, texto, logo e Discovery · Mercado Eletrônico com segmentos corretos.</div></div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>15 / 16</span></div>
+</section>
+
+<!-- 16 PLANO DE OUTUBRO -->
+<section data-screen-label="16 Plano de outubro">
+  <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Outubro 2026</span></div>
+  <div class="kicker">Próximo ciclo</div>
+  <div class="title" style="margin-bottom:12px;">O que vem em outubro.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:40px;">Quatro frentes, em ordem de prioridade.</div>
+  <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px;">
+    <div class="card" style="padding:36px; border-left:4px solid var(--astra-blue);">
+      <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:14px;"><span style="font-size:40px; font-weight:600; color:var(--astra-blue); letter-spacing:-0.03em;">01</span><span class="subtitle" style="font-size:38px;">Decidir o frete</span></div>
+      <div class="body" style="line-height:1.65;">Fechar outubro para confirmar o efeito com 3 meses de dado, levantar o custo real de frete absorvido na fatura da transportadora e aplicar o piso por região.</div>
+    </div>
+    <div class="card" style="padding:36px; border-left:4px solid var(--astra-blue);">
+      <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:14px;"><span style="font-size:40px; font-weight:600; color:var(--astra-blue); letter-spacing:-0.03em;">02</span><span class="subtitle" style="font-size:38px;">18 bancos novos no ML</span></div>
+      <div class="body" style="line-height:1.65;">Bancos de caminhão que existem no site e ainda não têm anúncio no Mercado Livre. Títulos e fotos prontos, falta subir. O canal já provou que converte.</div>
+    </div>
+    <div class="card" style="padding:36px; border-left:4px solid var(--laranja);">
+      <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:14px;"><span style="font-size:40px; font-weight:600; color:var(--laranja); letter-spacing:-0.03em;">03</span><span class="subtitle" style="font-size:38px;">Consertar o orçamento</span></div>
+      <div class="body" style="line-height:1.65;">O formulário de solicitação de orçamento do site não entrega o lead no CRM. Enquanto não funcionar, toda visita que pede proposta pelo site se perde.</div>
+    </div>
+    <div class="card" style="padding:36px; border-left:4px solid var(--laranja);">
+      <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:14px;"><span style="font-size:40px; font-weight:600; color:var(--laranja); letter-spacing:-0.03em;">04</span><span class="subtitle" style="font-size:38px;">Página de produto</span></div>
+      <div class="body" style="line-height:1.65;">Aplicar os achados do Hotjar: fotos nos produtos de foto única e botão de WhatsApp. É onde o tráfego do Meta está se perdendo hoje.</div>
+    </div>
+  </div>
+  <div class="foot"><span>Astra · Fechamento de Marketing</span><span>16 / 16</span></div>
+</section>
+
+</deck-stage>
+</body>
+</html>
