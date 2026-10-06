@@ -43,6 +43,23 @@
 .ba-row:last-child { border-bottom:none; }
 .ba-row .r-lab { font-size:18px; color:var(--ink-soft); }
 .ba-row .r-val { font-size:30px; font-weight:600; letter-spacing:-0.02em; font-feature-settings:"lnum"; }
+
+/* Densidade — este fechamento tem mais tabela e card que o de agosto,
+   então o chrome e os respiros encolhem para tudo caber em 1080px. */
+.mast { margin-bottom:34px; padding-bottom:16px; }
+.foot { padding-top:16px; }
+.kicker { margin-bottom:16px; }
+.title { font-size:74px; }
+.lead { font-size:26px; line-height:1.32; }
+.card, .card-tint, .card-blue, .card-ink { padding:24px; }
+.body { font-size:20px; line-height:1.42; }
+table.editorial { font-size:19px !important; }
+table.editorial th, table.editorial td { padding:11px 14px; }
+.ba > div { padding:24px 32px; }
+.ba-row { padding:10px 0; }
+.ba-row .r-val { font-size:27px; }
+.kpi { padding:24px 26px; }
+.kpi .k-num { font-size:56px; }
 </style>
 </head>
 <body>
@@ -137,7 +154,7 @@
   <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
   <div class="kicker">Frete grátis acima de R$ 1.000</div>
   <div class="title" style="margin-bottom:12px;">O cliente passou a<br>completar o carrinho.</div>
-  <div class="lead" style="max-width:1180px; margin-bottom:38px;">Comparação dos 11 meses anteriores ao benefício contra os 2 meses com ele. Pedidos da loja própria, sem cancelados.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:14px;">Comparação dos 11 meses anteriores ao benefício contra os 2 meses com ele. Pedidos da loja própria, sem cancelados.</div>
   <div class="ba">
     <div>
       <div class="ba-tag" style="color:var(--muted);">Antes · out/25 a ago/26 · 11 meses</div>
@@ -154,8 +171,8 @@
       <div class="ba-row"><span class="r-lab">Pedidos acima de R$ 1.000</span><span class="r-val" style="color:var(--astra-blue);">53%</span></div>
     </div>
   </div>
-  <div style="margin-top:34px; display:grid; grid-template-columns:2fr 1fr; gap:24px;">
-    <div class="card-blue"><div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.78; font-weight:700; margin-bottom:12px;">O número que importa</div><div style="font-size:29px; line-height:1.3;">A fatia de pedidos acima de R$ 1.000 <strong>triplicou</strong>. É o comportamento que um piso de frete grátis provoca: o cliente completa o carrinho para alcançar o benefício. O ticket médio dobrou junto.</div></div>
+  <div style="margin-top:20px; display:grid; grid-template-columns:2fr 1fr; gap:24px;">
+    <div class="card-blue"><div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.78; font-weight:700; margin-bottom:12px;">O número que importa</div><div style="font-size:26px; line-height:1.28;">A fatia de pedidos acima de R$ 1.000 <strong>triplicou</strong>. É o comportamento que um piso de frete grátis provoca: o cliente completa o carrinho para alcançar o benefício. O ticket médio dobrou junto.</div></div>
     <div class="card"><div class="label" style="margin-bottom:12px; color:var(--alerta);">Ressalva</div><div class="body">São 2 meses e 15 pedidos. Sinal forte, não prova. Com outubro fechado dá para cravar.</div></div>
   </div>
   <div class="foot"><span>Astra · Fechamento de Marketing</span><span>05 / 16</span></div>
@@ -195,19 +212,19 @@
   <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
   <div class="kicker">A decisão</div>
   <div class="title" style="margin-bottom:12px;">Limitar o frete grátis<br>ao Sul e Sudeste?</div>
-  <div class="lead" style="max-width:1180px; margin-bottom:36px;">A pergunta é legítima, mas os números mostram que cortar o resto do país custaria faturamento real.</div>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:32px;">
-    <div class="card" style="padding:34px;"><div class="label-blue" style="margin-bottom:14px;">Sul e Sudeste</div><div style="font-size:58px; font-weight:600; letter-spacing:-0.04em; font-feature-settings:'lnum'; margin-bottom:6px;">R$ 15.056,80</div><div class="lead">3 pedidos com frete grátis</div></div>
-    <div class="card" style="padding:34px; border-color:var(--laranja);"><div class="label" style="margin-bottom:14px; color:var(--laranja);">Resto do país</div><div style="font-size:58px; font-weight:600; letter-spacing:-0.04em; font-feature-settings:'lnum'; margin-bottom:6px;">R$ 12.866,61</div><div class="lead">4 pedidos com frete grátis</div></div>
+  <div class="lead" style="max-width:1180px; margin-bottom:14px;">A pergunta é legítima, mas os números mostram que cortar o resto do país custaria faturamento real.</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:20px;">
+    <div class="card" style="padding:34px;"><div class="label-blue" style="margin-bottom:14px;">Sul e Sudeste</div><div style="font-size:48px; font-weight:600; letter-spacing:-0.04em; font-feature-settings:'lnum'; margin-bottom:6px;">R$ 15.056,80</div><div class="lead">3 pedidos com frete grátis</div></div>
+    <div class="card" style="padding:34px; border-color:var(--laranja);"><div class="label" style="margin-bottom:14px; color:var(--laranja);">Resto do país</div><div style="font-size:48px; font-weight:600; letter-spacing:-0.04em; font-feature-settings:'lnum'; margin-bottom:6px;">R$ 12.866,61</div><div class="lead">4 pedidos com frete grátis</div></div>
   </div>
   <div class="card-ink" style="padding:38px;">
     <div style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.7; font-weight:700; margin-bottom:14px;">Proposta</div>
-    <div style="font-size:33px; line-height:1.3; margin-bottom:22px;">Em vez de cortar região, <strong>subir o piso onde o frete é caro</strong>.</div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; font-size:23px; line-height:1.4; opacity:0.92;">
+    <div style="font-size:29px; line-height:1.28; margin-bottom:16px;">Em vez de cortar região, <strong>subir o piso onde o frete é caro</strong>.</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; font-size:21px; line-height:1.35; opacity:0.92;">
       <div><strong style="color:var(--azul-estrelar);">Sul e Sudeste</strong><br>Frete grátis a partir de R$ 1.000, como está hoje.</div>
       <div><strong style="color:var(--laranja);">Demais estados</strong><br>Frete grátis a partir de R$ 2.500 ou R$ 3.000.</div>
     </div>
-    <div style="margin-top:24px; font-size:20px; opacity:0.75;">Mantém o benefício como alavanca de ticket no país inteiro, sem absorver R$ 500 de frete num pedido de R$ 1.100. O resto do país é 57% dos pedidos com frete grátis e 46% do faturamento deles.</div>
+    <div style="margin-top:16px; font-size:19px; opacity:0.75;">Mantém o benefício como alavanca de ticket no país inteiro, sem absorver R$ 500 de frete num pedido de R$ 1.100. O resto do país é 57% dos pedidos com frete grátis e 46% do faturamento deles.</div>
   </div>
   <div class="foot"><span>Astra · Fechamento de Marketing</span><span>07 / 16</span></div>
 </section>
@@ -279,7 +296,7 @@
   <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
   <div class="kicker">Mídia paga · últimos 30 dias</div>
   <div class="title" style="margin-bottom:12px;">Onde o investimento<br>virou venda.</div>
-  <div class="lead" style="max-width:1180px; margin-bottom:38px;">Três plataformas rodando. O Mercado Livre Ads é o que entrega venda com consistência; o Google Shopping entrega poucas conversões, mas de ticket alto.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:22px;">Três plataformas rodando. O Mercado Livre Ads é o que entrega venda com consistência; o Google Shopping entrega poucas conversões, mas de ticket alto.</div>
   <table class="editorial" style="font-size:21px;">
     <tr><th>Plataforma</th><th style="text-align:right;">Investimento</th><th style="text-align:right;">Cliques</th><th style="text-align:right;">Vendas</th><th style="text-align:right;">Receita</th><th style="text-align:right;">Retorno</th></tr>
     <tr><td><strong>Mercado Livre Ads</strong><br><span class="small">Catálogo inteiro</span></td><td style="text-align:right;">R$ 851,26</td><td style="text-align:right;">1.037</td><td style="text-align:right; font-weight:600;">24 un.</td><td style="text-align:right; font-weight:600;">R$ 2.448,42</td><td style="text-align:right; font-weight:600; color:var(--astra-blue);">2,9x</td></tr>
@@ -287,7 +304,7 @@
     <tr><td><strong>Meta</strong><br><span class="small">3 campanhas de compra</span></td><td style="text-align:right;">R$ 516,34</td><td style="text-align:right;">903</td><td style="text-align:right;">0</td><td style="text-align:right;">—</td><td style="text-align:right; color:var(--muted);">—</td></tr>
     <tr style="border-top:2px solid var(--ink);"><td style="font-weight:700;">Total</td><td style="text-align:right; font-weight:700;">R$ 1.743,92</td><td style="text-align:right; font-weight:700;">2.241</td><td style="text-align:right; font-weight:700;">25</td><td style="text-align:right; font-weight:700;">R$ 7.828,42</td><td style="text-align:right; font-weight:700; color:var(--astra-blue);">4,5x</td></tr>
   </table>
-  <div style="margin-top:34px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+  <div style="margin-top:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
     <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">O que vende no Google</div><div class="body">Bancos 7800 e 9515 concentram o investimento. Nas peças, o botão da válvula (G41920-I) e o botão de vidro Axor (W1003).</div></div>
     <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Meta não converteu</div><div class="body">903 cliques, 506 visitas de página e 5 carrinhos, mas zero compra. O gargalo está na página de destino, não no anúncio.</div></div>
     <div class="card"><div class="label" style="margin-bottom:10px; color:var(--alerta);">Ponto de atenção</div><div class="body">Uma conversão só no Google é amostra pequena para cravar o retorno de 14x. Precisa de mais mês.</div></div>
@@ -340,26 +357,26 @@
   <div class="mast"><div class="brand-mark"><svg width="20" height="20" viewBox="0 0 272.9 259.3"><path fill="#0C41C6" d="M122.6,135.4h-4.2c0,13.9-11.3,25.2-25.2,25.2v4.2c14,0,25.3,11.3,25.3,25.3h4.1c0-14,11.3-25.3,25.3-25.3h0v-4.1h0c-14,0-25.3-11.3-25.3-25.3ZM109.6,29.4L35.7,229.9h26.2l54.8-149c2.3-6.2,3.5-12.6,3.6-19.2,0-.3,0-.5,0-.7h4.1c0,1.1.1,3,.3,5.1.3,4.8,1.3,9.6,2.8,14.1l49.1,149.7h60.6L163,29.4h-53.5Z"/></svg><span>Astra · Fechamento de Marketing</span></div><span>Setembro 2026</span></div>
   <div class="kicker">Entregas</div>
   <div class="title" style="margin-bottom:12px;">Vinte e sete entregas<br>no mês.</div>
-  <div class="lead" style="max-width:1180px; margin-bottom:40px;">Agrupadas por frente. Cada uma está registrada no painel com detalhe e imagem.</div>
-  <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px;">
-    <div class="card" style="padding:34px;">
-      <div class="label-blue" style="margin-bottom:16px;">Catálogo e e-commerce · 9 entregas</div>
-      <div class="body" style="line-height:1.7;">Linha de reposição dos bancos 7801, 7802 e 6801 no ar, com 107 peças cadastradas · 3 bancos de caminhão novos criados · ecossistema de peças por banco com metafield em 119 peças e 3 coleções automáticas · catálogo publicado no SAP Ariba (259 produtos) e no Mercado Eletrônico (100) · catálogo da loja conectado ao Meta com app próprio.</div>
+  <div class="lead" style="max-width:1180px; margin-bottom:14px;">Agrupadas por frente. Cada uma está registrada no painel com detalhe e imagem.</div>
+  <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:18px;">
+    <div class="card" style="padding:26px;">
+      <div class="label-blue" style="margin-bottom:10px;">Catálogo e e-commerce · 9 entregas</div>
+      <div class="body" style="line-height:1.38; font-size:18px;">Linha de reposição dos bancos 7801, 7802 e 6801 no ar, com 107 peças cadastradas · 3 bancos de caminhão novos criados · ecossistema de peças por banco com metafield em 119 peças e 3 coleções automáticas · catálogo publicado no SAP Ariba (259 produtos) e no Mercado Eletrônico (100) · catálogo da loja conectado ao Meta com app próprio.</div>
     </div>
-    <div class="card" style="padding:34px;">
-      <div class="label-blue" style="margin-bottom:16px;">Super Saldão · 3 entregas</div>
-      <div class="body" style="line-height:1.7;">10 bancos parados na fábrica viraram campanha completa: produtos criados nos dois canais com ficha, foto e frete · coleção própria no site · banner desktop e mobile · 9 artes de produto · newsletter para a base · arte de WhatsApp para os vendedores. Quatro bancos já vendidos.</div>
+    <div class="card" style="padding:26px;">
+      <div class="label-blue" style="margin-bottom:10px;">Super Saldão · 3 entregas</div>
+      <div class="body" style="line-height:1.38; font-size:18px;">10 bancos parados na fábrica viraram campanha completa: produtos criados nos dois canais com ficha, foto e frete · coleção própria no site · banner desktop e mobile · 9 artes de produto · newsletter para a base · arte de WhatsApp para os vendedores. Quatro bancos já vendidos.</div>
     </div>
-    <div class="card" style="padding:34px;">
-      <div class="label-blue" style="margin-bottom:16px;">Mercado Livre · 2 entregas</div>
-      <div class="body" style="line-height:1.7;">Linha de empilhadeira reestruturada: preços, fotos e campanha de segunda unidade · anúncio da válvula paralela reformado, de 1 foto e 7 visitas por mês para nota 77 de qualidade.</div>
+    <div class="card" style="padding:26px;">
+      <div class="label-blue" style="margin-bottom:10px;">Mercado Livre · 2 entregas</div>
+      <div class="body" style="line-height:1.38; font-size:18px;">Linha de empilhadeira reestruturada: preços, fotos e campanha de segunda unidade · anúncio da válvula paralela reformado, de 1 foto e 7 visitas por mês para nota 77 de qualidade.</div>
     </div>
-    <div class="card" style="padding:34px;">
-      <div class="label-blue" style="margin-bottom:16px;">Conteúdo e marca · 8 entregas</div>
-      <div class="body" style="line-height:1.7;">Artigo sobre suspensão a ar ou hidráulica · carrosséis do 7800 e dos bancos Scania · post de visita técnica com calendário aberto · institucional de distribuidora ISRINGHAUSEN desde 1996 · campanha do Dia do Cliente · vídeo do banco 9515 · arte de envelopamento do carro.</div>
+    <div class="card" style="padding:26px;">
+      <div class="label-blue" style="margin-bottom:10px;">Conteúdo e marca · 8 entregas</div>
+      <div class="body" style="line-height:1.38; font-size:18px;">Artigo sobre suspensão a ar ou hidráulica · carrosséis do 7800 e dos bancos Scania · post de visita técnica com calendário aberto · institucional de distribuidora ISRINGHAUSEN desde 1996 · campanha do Dia do Cliente · vídeo do banco 9515 · arte de envelopamento do carro.</div>
     </div>
   </div>
-  <div style="margin-top:28px; display:grid; grid-template-columns:repeat(2,1fr); gap:24px;">
+  <div style="margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px;">
     <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">SEO · 3 entregas</div><div class="body">Página de peças Scania reescrita · alt text em 23 imagens · typos corrigidos nos títulos G6502 e G6503.</div></div>
     <div class="card-tint"><div class="label-blue" style="margin-bottom:10px;">Portais B2B · 2 entregas</div><div class="body">Perfil no SAP Ariba auditado com palavras-chave, texto, logo e Discovery · Mercado Eletrônico com segmentos corretos.</div></div>
   </div>
